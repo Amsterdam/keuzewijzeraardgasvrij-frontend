@@ -1,0 +1,9 @@
+services:
+  keuzewijzeraardgasvrij-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: keuzewijzeraardgasvrij-frontend
+    image: ${REGISTRY:-127.0.0.1:5001}/${REPOSITORY:-salmagundi/keuzewijzeraardgasvrij-frontend}:${VERSION:-latest}
+    ports:
+      - "8081:8000"
