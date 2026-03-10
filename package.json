@@ -42,7 +42,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0"
   },
- "lint-staged": {
+  "lint-staged": {
     "**/*.{ts,tsx}": [
       "eslint --cache --fix",
       "prettier --write"
