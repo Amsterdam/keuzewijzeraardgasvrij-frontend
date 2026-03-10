@@ -1,9 +1,9 @@
-import HomePage from "./pages/HomePage/HomePage";
 import "@amsterdam/design-system-assets/font/index.css";
 import "@amsterdam/design-system-css/dist/index.css";
 import "@amsterdam/design-system-tokens/dist/index.css";
 import { Page } from "@amsterdam/design-system-react";
-import { Footer, Header } from "./components";
+import { Footer, Header } from "@/components";
+import HomePage from "@/pages/HomePage/HomePage";
 
 function App() {
   return (

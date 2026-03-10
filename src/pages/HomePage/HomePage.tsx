@@ -5,7 +5,9 @@ function HomePage() {
     <main id="inhoud">
       <Grid gapVertical="large" paddingVertical="x-large">
         <Grid.Cell span="all">
-          <Heading level={1}>Beslistool VvE</Heading>
+          <Heading level={1}>
+            {`${import.meta.env.VITE_APP_TITLE} ${import.meta.env.VITE_ENVIRONMENT_SHORT}`}
+          </Heading>
         </Grid.Cell>
 
         <Grid.Cell span="all">
