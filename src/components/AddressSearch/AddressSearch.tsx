@@ -13,6 +13,8 @@ function AddressSearch() {
   const [query, setQuery] = useState("");
   const { results, loading, error } = usePdokAddressSearch(query, true);
 
+  const showResultsInfo = !loading && query.length >= 3;
+
   return (
     <Grid gapVertical="large" className="ams-mb-xl">
       <Grid.Cell span={{ narrow: 4, medium: 6, wide: 7 }}>
@@ -39,9 +41,11 @@ function AddressSearch() {
           </Alert>
         )}
 
-        {!loading && query.length >= 3 && (
+        {showResultsInfo && (
           <Paragraph className="ams-mb-m">
-            <strong>{results.length}</strong> adressen gevonden voor ‘{query}’.
+            <strong>{results.length}</strong>{" "}
+            {results.length === 1 ? "adres" : "adressen"} gevonden voor ‘{query}
+            ’{results.length >= 10 && " (maximaal 10 getoond)"}
           </Paragraph>
         )}
 
