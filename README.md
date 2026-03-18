@@ -60,6 +60,12 @@ A pre-commit hook is installed.
 
 This project uses the Amsterdam Design System for consistent UI components and styling.
 
+# Directory tree structure
+
+```typescript
+tree -I "node_modules|.next|.git" -L 10 > directory-tree.txt
+```
+
 ## License
 
 See LICENSE file for details.

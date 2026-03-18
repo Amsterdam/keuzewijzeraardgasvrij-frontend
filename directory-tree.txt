@@ -1,0 +1,48 @@
+.
+├── directory-tree.txt
+├── docker-compose.yml
+├── Dockerfile
+├── entrypoint.sh
+├── eslint.config.js
+├── index.html
+├── LICENSE
+├── Makefile
+├── nginx.conf
+├── package.json
+├── package-lock.json
+├── public
+│   ├── app-icons -> ../node_modules/@amsterdam/design-system-assets/app-icons
+│   ├── app.webmanifest
+│   └── favicon -> ../node_modules/@amsterdam/design-system-assets/favicon
+├── README.md
+├── src
+│   ├── api
+│   │   ├── ApiClient.ts
+│   │   └── pdok
+│   │       ├── pdokApi.ts
+│   │       ├── pdokHooks.ts
+│   │       └── pdokQueryBuilder.ts
+│   ├── App.tsx
+│   ├── components
+│   │   ├── AddressSearch
+│   │   │   └── AddressSearch.tsx
+│   │   ├── Footer
+│   │   │   └── Footer.tsx
+│   │   ├── Header
+│   │   │   └── Header.tsx
+│   │   ├── index.ts
+│   │   ├── Steps
+│   │   │   ├── Steps.module.css
+│   │   │   └── Steps.tsx
+│   │   └── WelcomeSection
+│   │       └── WelcomeSection.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── types
+│       └── BAGPdokResponse.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+14 directories, 32 files
