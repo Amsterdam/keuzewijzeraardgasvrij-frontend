@@ -9,9 +9,9 @@ import { FormProvider, mapErrorsToAlert } from "@amsterdam/ee-ads-rhf";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { technicalFormSchema, type FormValues } from "./technicalFormSchema";
-import { TechnicalFormBuilding } from "./TechnicalFormBuilding";
-import { TechnicalFormEnergy } from "./TechnicalFormEnergy";
-import { TechnicalFormWishes } from "./TechnicalFormWishes";
+import { TechnicalFormBuilding } from "./sections/TechnicalFormBuilding";
+import { TechnicalFormEnergy } from "./sections/TechnicalFormEnergy";
+import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
 
 const ENV = "ACCEPTANCE";

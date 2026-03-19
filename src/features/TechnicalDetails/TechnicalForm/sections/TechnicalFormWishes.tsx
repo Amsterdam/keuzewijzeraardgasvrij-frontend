@@ -1,7 +1,7 @@
 import { Heading, Grid } from "@amsterdam/design-system-react";
 import { SelectControl } from "@amsterdam/ee-ads-rhf";
-import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "./formConstants";
-import type { FormValues } from "./technicalFormSchema";
+import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
+import type { FormValues } from "../technicalFormSchema";
 
 type Props = {
   isLoading: boolean;

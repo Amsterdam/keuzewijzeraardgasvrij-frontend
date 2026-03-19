@@ -12,10 +12,19 @@ import Wizard from "./features/Wizard/Wizard";
 
 function App() {
   return (
-    <Page lang="nl">
-      <Header />
-      <WelcomeSection />
-      <Wizard />
+    <Page
+      lang="nl"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
+      <div style={{ flex: "1 0 auto" }}>
+        <Header />
+        <WelcomeSection />
+        <Wizard />
+      </div>
       <Footer />
     </Page>
   );
