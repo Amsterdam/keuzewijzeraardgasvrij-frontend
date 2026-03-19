@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Button,
@@ -7,16 +6,23 @@ import {
 } from "@amsterdam/design-system-react";
 import { FormProvider, mapErrorsToAlert } from "@amsterdam/ee-ads-rhf";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 
+import { apiClient } from "@/api";
 import { technicalFormSchema, type FormValues } from "./technicalFormSchema";
 import { TechnicalFormBuilding } from "./sections/TechnicalFormBuilding";
 import { TechnicalFormEnergy } from "./sections/TechnicalFormEnergy";
 import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
+import { mapFormValues } from "./mapFormValues";
 
 const ENV = "ACCEPTANCE";
 
-export default function TechnicalForm() {
+type Props = {
+  onNext: () => void;
+};
+
+export default function TechnicalForm({ onNext }: Props) {
   const defaultValues: FormValues = ENV
     ? generateDummyData()
     : defaultFormValues();
@@ -27,14 +33,23 @@ export default function TechnicalForm() {
     defaultValues: defaultValues,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const mutation = useMutation({
+    mutationFn: (data: FormValues) =>
+      apiClient.post("/calculation-inputs/", mapFormValues(data)),
+    onSuccess: (response) => {
+      console.log("Form submitted successfully:", response);
+      onNext();
+    },
+    onError: (error) => {
+      console.error("Error submitting form:", error);
+    },
+  });
 
-  const onSubmit = async (data: FormValues) => {
-    setIsLoading(true);
-    console.log(" Submitting form with data: ", data);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+  const isLoading = mutation.isPending;
+
+  const onSubmit = (data: FormValues) => {
+    console.log(" Submitting form with data:", data);
+    mutation.mutate(data);
   };
 
   const showErrors = Object.keys(form.formState.errors).length > 0;
