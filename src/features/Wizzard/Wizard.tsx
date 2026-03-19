@@ -3,7 +3,7 @@ import { Grid } from "@amsterdam/design-system-react";
 
 import { Steps } from "@/components";
 import { steps, dummyAddress } from "./steps.config.ts";
-import AddressSearch from "../AddressSearch/AddressSearch";
+import AddressSearch from "../AddressSearch/AddressSearch.tsx";
 import TechnicalDetails from "../TechnicalDetails/TechnicalDetails.tsx";
 import { DEFAULT_CONTENT_SPAN } from "@/constants.ts";
 

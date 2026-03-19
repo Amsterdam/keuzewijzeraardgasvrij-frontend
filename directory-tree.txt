@@ -44,9 +44,9 @@
 │   │   │   └── TechnicalForm
 │   │   │       ├── technicalFormSchema.ts
 │   │   │       └── TechnicalForm.tsx
-│   │   └── Wizzard
+│   │   └── Wizard
 │   │       ├── steps.config.ts
-│   │       └── Wizzard.tsx
+│   │       └── Wizard.tsx
 │   ├── index.css
 │   ├── main.tsx
 │   ├── styles

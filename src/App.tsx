@@ -8,14 +8,14 @@ import "@amsterdam/design-system-tokens/dist/compact.css";
 
 import { Page } from "@amsterdam/design-system-react";
 import { Footer, Header, WelcomeSection } from "@/components";
-import Wizzard from "./features/Wizzard/Wizzard";
+import Wizard from "./features/Wizard/Wizard";
 
 function App() {
   return (
     <Page lang="nl">
       <Header />
       <WelcomeSection />
-      <Wizzard />
+      <Wizard />
       <Footer />
     </Page>
   );
