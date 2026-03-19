@@ -1,19 +1,21 @@
 import "@amsterdam/design-system-assets/font/index.css";
 import "@amsterdam/design-system-css/dist/index.css";
 import "@amsterdam/design-system-tokens/dist/index.css";
-import { Page, SkipLink } from "@amsterdam/design-system-react";
+
+// Compact mode Amsterdam Design System
+import "@amsterdam/design-system-tokens/dist/index.css";
+import "@amsterdam/design-system-tokens/dist/compact.css";
+
+import { Page } from "@amsterdam/design-system-react";
 import { Footer, Header, WelcomeSection } from "@/components";
-import AddressSearch from "./components/AddressSearch/AddressSearch";
+import Wizard from "./features/Wizard/Wizard";
 
 function App() {
   return (
     <Page lang="nl">
-      <SkipLink href="#inhoud">Direct naar inhoud</SkipLink>
       <Header />
-      <main id="inhoud">
-        <WelcomeSection />
-        <AddressSearch />
-      </main>
+      <WelcomeSection />
+      <Wizard />
       <Footer />
     </Page>
   );

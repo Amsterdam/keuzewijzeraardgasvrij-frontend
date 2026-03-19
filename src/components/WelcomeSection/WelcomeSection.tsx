@@ -1,4 +1,5 @@
 import { Grid, Heading, Paragraph } from "@amsterdam/design-system-react";
+import { DEFAULT_CONTENT_SPAN } from "@/constants";
 
 export function WelcomeSection() {
   return (
@@ -9,7 +10,7 @@ export function WelcomeSection() {
         </Heading>
       </Grid.Cell>
 
-      <Grid.Cell span="all">
+      <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
         <Paragraph>
           Krijg met een paar antwoorden advies over welke mogelijkheden er zijn
           om uw Vereniging van Eigenaren (VvE) te verduurzamen. We nemen u stap

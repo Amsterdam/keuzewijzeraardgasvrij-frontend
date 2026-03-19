@@ -1,0 +1,61 @@
+.
+├── directory-tree.txt
+├── docker-compose.yml
+├── Dockerfile
+├── entrypoint.sh
+├── eslint.config.js
+├── index.html
+├── LICENSE
+├── Makefile
+├── nginx.conf
+├── package.json
+├── package-lock.json
+├── public
+│   ├── app-icons -> ../node_modules/@amsterdam/design-system-assets/app-icons
+│   ├── app.webmanifest
+│   └── favicon -> ../node_modules/@amsterdam/design-system-assets/favicon
+├── README.md
+├── src
+│   ├── api
+│   │   ├── ApiClient.ts
+│   │   └── pdok
+│   │       ├── pdokApi.ts
+│   │       ├── pdokHooks.ts
+│   │       └── pdokQueryBuilder.ts
+│   ├── App.tsx
+│   ├── components
+│   │   ├── Footer
+│   │   │   └── Footer.tsx
+│   │   ├── Header
+│   │   │   └── Header.tsx
+│   │   ├── index.ts
+│   │   ├── QueryParamLink
+│   │   │   └── QueryParamLink.tsx
+│   │   ├── Steps
+│   │   │   ├── Steps.module.css
+│   │   │   └── Steps.tsx
+│   │   └── WelcomeSection
+│   │       └── WelcomeSection.tsx
+│   ├── features
+│   │   ├── AddressSearch
+│   │   │   └── AddressSearch.tsx
+│   │   ├── TechnicalDetails
+│   │   │   ├── TechnicalDetails.tsx
+│   │   │   └── TechnicalForm
+│   │   │       ├── technicalFormSchema.ts
+│   │   │       └── TechnicalForm.tsx
+│   │   └── Wizard
+│   │       ├── steps.config.ts
+│   │       └── Wizard.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── styles
+│   │   └── overrides.css
+│   └── types
+│       └── BAGPdokResponse.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+20 directories, 39 files
