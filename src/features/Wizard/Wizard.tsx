@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid } from "@amsterdam/design-system-react";
+import { Grid, Paragraph } from "@amsterdam/design-system-react";
 
 import { Steps } from "@/components";
 import { steps, dummyAddress } from "./steps.config.ts";
@@ -7,7 +7,7 @@ import AddressSearch from "../AddressSearch/AddressSearch.tsx";
 import TechnicalDetails from "../TechnicalDetails/TechnicalDetails.tsx";
 import { DEFAULT_CONTENT_SPAN } from "@/constants.ts";
 
-export default function Wizzard() {
+export default function Wizard() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
@@ -33,10 +33,17 @@ export default function Wizzard() {
       )}
       {currentStep === 2 && (
         <Grid.Cell span="all">
-          <TechnicalDetails address={selectedAddress} />
+          <TechnicalDetails
+            address={selectedAddress}
+            onNext={() => setCurrentStep(3)}
+          />
         </Grid.Cell>
       )}
-      {currentStep === 3 && <Grid.Cell span="all">Resultaat</Grid.Cell>}
+      {currentStep === 3 && (
+        <Grid.Cell span="all">
+          <Paragraph>Succesvol resultaat!</Paragraph>
+        </Grid.Cell>
+      )}
     </Grid>
   );
 }

@@ -4,9 +4,10 @@ import { DEFAULT_CONTENT_SPAN } from "@/constants";
 
 type Props = {
   address?: BAGPdokAddress;
+  onNext: () => void;
 };
 
-export default function TechnicalDetails({ address }: Props) {
+export default function TechnicalDetails({ address, onNext }: Props) {
   return (
     <>
       <Grid className="no-padding-inline">
@@ -18,7 +19,7 @@ export default function TechnicalDetails({ address }: Props) {
           </Paragraph>
         </Grid.Cell>
       </Grid>
-      <TechnicalForm />
+      <TechnicalForm onNext={onNext} />
     </>
   );
 }

@@ -4,8 +4,8 @@ import {
   DEFAULT_SPAN,
   DEFAULT_OPTIONS_BOOLEAN,
   HEATING_TYPES,
-} from "./formConstants";
-import type { FormValues } from "./technicalFormSchema";
+} from "../formConstants";
+import type { FormValues } from "../technicalFormSchema";
 
 type Props = {
   isLoading: boolean;
