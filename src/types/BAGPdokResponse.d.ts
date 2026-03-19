@@ -9,8 +9,8 @@ declare type BAGPdokAddress = {
   adresseerbaarobject_id: string;
   straatnaam: string;
   huisnummer: integer;
-  huisletter: string;
-  huisnummertoevoeging: string;
+  huisletter?: string;
+  huisnummertoevoeging?: string;
   score: float;
 };
 

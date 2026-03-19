@@ -4,7 +4,7 @@ type Props = {
   paramKey: string;
   value: string;
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (value: Record<string, string> | string) => void;
 };
 
 export function QueryParamLink({ paramKey, value, children, onClick }: Props) {
@@ -17,7 +17,7 @@ export function QueryParamLink({ paramKey, value, children, onClick }: Props) {
     window.history.pushState({}, "", url);
 
     if (onClick) {
-      onClick();
+      onClick(value);
     }
   };
 

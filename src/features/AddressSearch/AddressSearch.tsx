@@ -11,10 +11,10 @@ import { usePdokAddressSearch } from "@/api/pdok/pdokHooks";
 import { QueryParamLink } from "@/components";
 
 type Props = {
-  onNext: () => void;
+  onSelectAddress: (address: BAGPdokAddress) => void;
 };
 
-function AddressSearch({ onNext }: Props) {
+function AddressSearch({ onSelectAddress }: Props) {
   const [query, setQuery] = useState("");
   const { results, loading, error } = usePdokAddressSearch(query, true);
 
@@ -60,7 +60,7 @@ function AddressSearch({ onNext }: Props) {
               paramKey="id"
               key={r.nummeraanduiding_id}
               value={r.nummeraanduiding_id}
-              onClick={onNext}
+              onClick={() => onSelectAddress(r)}
             >
               {r.weergavenaam}
             </QueryParamLink>

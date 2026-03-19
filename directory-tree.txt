@@ -24,20 +24,33 @@
 │   │       └── pdokQueryBuilder.ts
 │   ├── App.tsx
 │   ├── components
-│   │   ├── AddressSearch
-│   │   │   └── AddressSearch.tsx
 │   │   ├── Footer
 │   │   │   └── Footer.tsx
 │   │   ├── Header
 │   │   │   └── Header.tsx
 │   │   ├── index.ts
+│   │   ├── QueryParamLink
+│   │   │   └── QueryParamLink.tsx
 │   │   ├── Steps
 │   │   │   ├── Steps.module.css
 │   │   │   └── Steps.tsx
 │   │   └── WelcomeSection
 │   │       └── WelcomeSection.tsx
+│   ├── features
+│   │   ├── AddressSearch
+│   │   │   └── AddressSearch.tsx
+│   │   ├── TechnicalDetails
+│   │   │   ├── TechnicalDetails.tsx
+│   │   │   └── TechnicalForm
+│   │   │       ├── technicalFormSchema.ts
+│   │   │       └── TechnicalForm.tsx
+│   │   └── Wizzard
+│   │       ├── steps.config.ts
+│   │       └── Wizzard.tsx
 │   ├── index.css
 │   ├── main.tsx
+│   ├── styles
+│   │   └── overrides.css
 │   └── types
 │       └── BAGPdokResponse.d.ts
 ├── tsconfig.app.json
@@ -45,4 +58,4 @@
 ├── tsconfig.node.json
 └── vite.config.ts
 
-14 directories, 32 files
+20 directories, 39 files
