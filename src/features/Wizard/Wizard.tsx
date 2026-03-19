@@ -7,7 +7,7 @@ import AddressSearch from "../AddressSearch/AddressSearch.tsx";
 import TechnicalDetails from "../TechnicalDetails/TechnicalDetails.tsx";
 import { DEFAULT_CONTENT_SPAN } from "@/constants.ts";
 
-export default function Wizzard() {
+export default function Wizard() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
