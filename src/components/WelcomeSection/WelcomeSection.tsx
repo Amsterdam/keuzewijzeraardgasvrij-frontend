@@ -1,4 +1,5 @@
 import { Grid, Heading, Paragraph } from "@amsterdam/design-system-react";
+import { env } from "@/config/env";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 
 export function WelcomeSection() {
@@ -6,7 +7,7 @@ export function WelcomeSection() {
     <Grid gapVertical="large" paddingVertical="large">
       <Grid.Cell span="all">
         <Heading level={1}>
-          {`${import.meta.env.VITE_APP_TITLE} ${import.meta.env.VITE_ENVIRONMENT_SHORT}`}
+          {`${env.VITE_APP_TITLE} ${import.meta.env.VITE_ENVIRONMENT_SHORT}`}
         </Heading>
       </Grid.Cell>
 
