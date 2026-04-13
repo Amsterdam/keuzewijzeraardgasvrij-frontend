@@ -11,7 +11,7 @@ export function defaultFormValues(): FormValues {
     ruimteOpHetDakAanwezig: "false",
     typeDak: "plat_dak",
     tapwaterOpGas: "false",
-    gasverbruikPerWoning: 0,
+    kokenOpGas: "false",
     gasverbruikVveTotaal: 0,
     elektriciteitsverbruikPerWoning: 0,
     elektriciteitsverbruikVveTotaal: 0,
@@ -27,12 +27,14 @@ export function generateDummyData(): FormValues {
   const vloerOppervlakPerWoning = Math.floor(Math.random() * 120) + 30; // Random number between 30 and 150
   const brutoVloeroppervlak = vloerOppervlakPerWoning * aantalWoningen; // Total floor area
   const gasverbruikPerWoning = Math.floor(Math.random() * 2500) + 1000; // Random number between 1000 and 3500
+  const gasverbruikVveTotaal =
+    gasverbruikPerWoning * aantalWoningen + Math.floor(Math.random() * 10000); // Total gas consumption with some random variation
   const elektriciteitsverbruikPerWoning =
     Math.floor(Math.random() * 4500) + 1500; // Random number between 1500 and 6000
 
   return {
     bouwjaar: 1950 + Math.floor(Math.random() * 70),
-    brutoVloeroppervlak,
+    brutoVloeroppervlak: brutoVloeroppervlak,
     aantalWoningen: aantalWoningen,
     mechanischeVentilatieAanwezig: Math.random() > 0.5 ? "true" : "false",
     vloerverwarmingAanwezig: Math.random() > 0.5 ? "true" : "false",
@@ -40,9 +42,8 @@ export function generateDummyData(): FormValues {
     ruimteOpHetDakAanwezig: Math.random() > 0.5 ? "true" : "false",
     typeDak: Math.random() > 0.5 ? "plat_dak" : "schuin_dak",
     tapwaterOpGas: Math.random() > 0.5 ? "true" : "false",
-    gasverbruikPerWoning: gasverbruikPerWoning,
-    gasverbruikVveTotaal:
-      gasverbruikPerWoning * aantalWoningen + Math.floor(Math.random() * 10000), // Total gas consumption with some random variation
+    kokenOpGas: Math.random() > 0.5 ? "true" : "false",
+    gasverbruikVveTotaal: gasverbruikVveTotaal,
     elektriciteitsverbruikPerWoning: elektriciteitsverbruikPerWoning,
     elektriciteitsverbruikVveTotaal:
       elektriciteitsverbruikPerWoning * aantalWoningen +

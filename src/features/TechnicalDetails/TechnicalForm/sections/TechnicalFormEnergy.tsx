@@ -33,11 +33,10 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <TextInputControl<FormValues>
-            label="Gasverbruik 1 woning (m³)"
-            name="gasverbruikPerWoning"
-            inputMode="numeric"
-            pattern="[0-9]*"
+          <SelectControl<FormValues>
+            label="Koken op gas?"
+            name="kokenOpGas"
+            options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
             disabled={isLoading}
             style={{ width: "100%" }}

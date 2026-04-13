@@ -29,9 +29,8 @@ export const technicalFormSchema = z.object({
 
   tapwaterOpGas: booleanStringEnum,
 
-  gasverbruikPerWoning: z.coerce
-    .number()
-    .min(1, "Het gasverbruik per woning moet groter dan 0 zijn."),
+  kokenOpGas: booleanStringEnum,
+
   gasverbruikVveTotaal: z.coerce
     .number()
     .min(1, "Het totale gasverbruik van de VvE moet groter dan 0 zijn."),
