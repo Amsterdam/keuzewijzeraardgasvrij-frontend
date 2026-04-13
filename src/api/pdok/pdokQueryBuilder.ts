@@ -6,8 +6,7 @@ const ADDRESS_TYPE_HOOFDADRES_FILTER =
 const ADDRESS_TYPE_ADRES_FILTER = "AND (type:adres)";
 const DEFAULT_SORT = "score desc, weergavenaam asc";
 const FIELD_LIST =
-  "weergavenaam,adrestype,gemeentenaam,nummeraanduiding_id,adresseerbaarobject_id,straatnaam,huisnummer,huisletter,huisnummertoevoeging,postcode,woonplaatsnaam,centroide_ll,score";
-
+  "adrestype,adresseerbaarobject_id,buurtcode,buurtnaam,centroide_ll,gemeentenaam,huisletter,huisnummer,huisnummertoevoeging,nummeraanduiding_id,postcode,score,straatnaam,weergavenaam,woonplaatsnaam";
 const START = 0;
 const RESULTS_PER_PAGE = 10;
 
