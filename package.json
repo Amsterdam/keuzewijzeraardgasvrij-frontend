@@ -15,13 +15,13 @@
   "dependencies": {
     "@amsterdam/design-system-assets": "^2.0.0",
     "@amsterdam/design-system-css": "^3.1.0",
-    "@amsterdam/design-system-react": "^3.2.1",
+    "@amsterdam/design-system-react": "^3.3.0",
     "@amsterdam/design-system-react-icons": "^2.0.0",
     "@amsterdam/design-system-tokens": "^3.1.0",
     "@amsterdam/ee-ads-rhf": "^0.0.4",
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.95.2",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.6.0",
     "@types/qs": "^6.15.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -46,7 +46,7 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.57.2"
+    "typescript-eslint": "^8.58.1"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
