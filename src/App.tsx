@@ -8,7 +8,12 @@ import "@amsterdam/design-system-tokens/dist/compact.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Page } from "@amsterdam/design-system-react";
-import { Footer, Header, WelcomeSection } from "@/components";
+import {
+  Footer,
+  Header,
+  WelcomeSection,
+  TestEnvironmentAlert,
+} from "@/components";
 import Wizard from "./features/Wizard/Wizard";
 
 const queryClient = new QueryClient();
@@ -25,6 +30,7 @@ function App() {
         }}
       >
         <div style={{ flex: "1 0 auto" }}>
+          <TestEnvironmentAlert />
           <Header />
           <WelcomeSection />
           <Wizard />
