@@ -7,7 +7,7 @@ export function WelcomeSection() {
     <Grid gapVertical="large" paddingVertical="large">
       <Grid.Cell span="all">
         <Heading level={1}>
-          {`${env.VITE_APP_TITLE} ${import.meta.env.VITE_ENVIRONMENT_SHORT}`}
+          {`${env.VITE_APP_TITLE} ${env.VITE_ENVIRONMENT_SHORT}`}
         </Heading>
       </Grid.Cell>
 
