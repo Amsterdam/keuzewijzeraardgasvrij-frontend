@@ -11,10 +11,11 @@ export function QueryParamLink({ paramKey, value, children, onClick }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const url = new URL(window.location.href);
-    url.searchParams.set(paramKey, value);
+    // TODO: Is this needed? It updates the URL but doesn't trigger any reactivity in the app. If we want that, we might need tu fetch the BAG PDOK information.
+    // const url = new URL(window.location.href);
+    // url.searchParams.set(paramKey, value);
 
-    window.history.pushState({}, "", url);
+    // window.history.pushState({}, "", url);
 
     if (onClick) {
       onClick(value);

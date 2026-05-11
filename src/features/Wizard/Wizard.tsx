@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Grid, Paragraph } from "@amsterdam/design-system-react";
 
 import { Steps } from "@/components";
@@ -8,7 +8,13 @@ import TechnicalDetails from "../TechnicalDetails/TechnicalDetails.tsx";
 import { DEFAULT_CONTENT_SPAN } from "@/constants.ts";
 
 export default function Wizard() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const bagId = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("bagId");
+  }, []);
+
+  const [currentStep, setCurrentStep] = useState(bagId ? 2 : 1);
+
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
 

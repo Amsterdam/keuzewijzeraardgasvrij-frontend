@@ -1,4 +1,5 @@
-import { useForm } from "react-hook-form";
+import { useMemo } from "react";
+import { useForm, type DefaultValues } from "react-hook-form";
 import {
   Button,
   InvalidFormAlert,
@@ -16,21 +17,24 @@ import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
 import { mapFormValues } from "./mapFormValues";
 
-const ENV = "ACCEPTANCE";
-
 type Props = {
   onNext: () => void;
 };
 
 export default function TechnicalForm({ onNext }: Props) {
-  const defaultValues: FormValues = ENV
-    ? generateDummyData()
-    : defaultFormValues();
+  const searchParams = new URLSearchParams(window.location.search);
 
-  const form = useForm({
-    mode: "onBlur",
+  const shouldUseDummyData = searchParams.get("dummy") === "true";
+
+  const defaultValues: DefaultValues<FormValues> = useMemo(() => {
+    return shouldUseDummyData ? generateDummyData() : defaultFormValues();
+  }, [shouldUseDummyData]);
+
+  const form = useForm<FormValues>({
+    mode: "onSubmit",
+    reValidateMode: "onChange",
     resolver: zodResolver(technicalFormSchema),
-    defaultValues: defaultValues,
+    defaultValues,
   });
 
   const mutation = useMutation({
@@ -70,7 +74,7 @@ export default function TechnicalForm({ onNext }: Props) {
       <TechnicalFormWishes isLoading={isLoading} />
 
       <ActionGroup>
-        <Button type="submit" disabled={!form.formState.isValid || isLoading}>
+        <Button type="submit" disabled={isLoading}>
           Volgende stap
         </Button>
       </ActionGroup>
