@@ -57,7 +57,7 @@ function AddressSearch({ onSelectAddress }: Props) {
         <LinkList>
           {results.map((r) => (
             <QueryParamLink
-              paramKey="id"
+              paramKey="bagId"
               key={r.nummeraanduiding_id}
               value={r.nummeraanduiding_id}
               onClick={() => onSelectAddress(r)}

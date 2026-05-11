@@ -1,25 +1,7 @@
 import type { FormValues } from "./technicalFormSchema";
 
-export function defaultFormValues(): FormValues {
-  return {
-    bouwjaar: 0,
-    brutoVloeroppervlak: 0,
-    aantalWoningen: 0,
-    mechanischeVentilatieAanwezig: "false",
-    vloerverwarmingAanwezig: "false",
-    inpandigeBergingAanwezig: "false",
-    ruimteOpHetDakAanwezig: "false",
-    typeDak: "plat_dak",
-    tapwaterOpGas: "false",
-    kokenOpGas: "false",
-    gasverbruikVveTotaal: 0,
-    elektriciteitsverbruikPerWoning: 0,
-    elektriciteitsverbruikVveTotaal: 0,
-    gecontracteerdVermogen: 0,
-    huidigeWarmtesysteem: "cv_ketel",
-    volledigGasLoos: "false",
-    wensTotKoelen: "false",
-  };
+export function defaultFormValues(): Partial<FormValues> {
+  return {};
 }
 
 export function generateDummyData(): FormValues {
