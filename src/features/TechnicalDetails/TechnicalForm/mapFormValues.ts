@@ -21,5 +21,15 @@ export function mapFormValues(formValues: FormValues) {
     vloerverwarming_aanwezig: formValues.vloerverwarmingAanwezig,
     volledig_gasloos: formValues.volledigGasLoos,
     wens_tot_koelen: formValues.wensTotKoelen,
+    huidig_systeem: formValues.huidigSysteem,
+    dubbel_glas: formValues.dubbelGlas,
+    beschikbare_ruimte_in_woning_m2: formValues.beschikbareRuimteInWoningM2,
+    beschikbare_collectieve_ruimte_binnen_m2:
+      formValues.beschikbareCollectieveRuimteBinnenM2,
+    beschikbare_collectieve_ruimte_buiten_m2:
+      formValues.beschikbareCollectieveRuimteBuitenM2,
+    jaar_vervangen: formValues.jaarVervangen,
+    wtw_aanwezig: formValues.wtwAanwezig,
+    buurtcode: "BU03636501",
   };
 }

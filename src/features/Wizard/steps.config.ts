@@ -16,4 +16,5 @@ export const dummyAddress: BAGPdokAddress = {
   huisnummer: 1,
   straatnaam: "Amstel",
   score: 5.729482,
+  buurtcode: "BU0363AF09",
 };

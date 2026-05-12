@@ -4,6 +4,7 @@ import {
   DEFAULT_SPAN,
   DEFAULT_OPTIONS_BOOLEAN,
   HEATING_TYPES,
+  SYSTEM_TYPES,
 } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
@@ -19,7 +20,7 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
         paddingBottom="x-large"
         paddingTop="large"
         gapVertical="large"
-        className="no-padding-inline"
+        className="no-padding-inline align-items-end"
       >
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
@@ -96,6 +97,17 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             label="Huidige warmtesysteem"
             name="huidigeWarmtesysteem"
             options={HEATING_TYPES}
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            style={{ width: "100%" }}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <SelectControl<FormValues>
+            label="Wat is uw huidige systeem?"
+            name="huidigSysteem"
+            options={SYSTEM_TYPES}
             registerOptions={{ required: true }}
             disabled={isLoading}
             style={{ width: "100%" }}

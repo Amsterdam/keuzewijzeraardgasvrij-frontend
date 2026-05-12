@@ -8,8 +8,8 @@ export const technicalFormSchema = z.object({
           ? "Bouwjaar is verplicht."
           : "Voer een geldig getal in voor het bouwjaar.",
     })
-    .gte(1500, { error: "Het bouwjaar is niet geldig." })
-    .lte(new Date().getFullYear(), {
+    .min(1500, { error: "Het bouwjaar is niet geldig." })
+    .max(new Date().getFullYear(), {
       error: "Het bouwjaar kan niet in de toekomst liggen.",
     }),
 
@@ -37,18 +37,21 @@ export const technicalFormSchema = z.object({
         ? "Geef aan of mechanische ventilatie aanwezig is."
         : "Ongeldige waarde voor mechanische ventilatie.",
   }),
+
   vloerverwarmingAanwezig: z.enum(["true", "false"], {
     error: (iss) =>
       iss.input === undefined
         ? "Geef aan of vloerverwarming aanwezig is."
         : "Ongeldige waarde voor vloerverwarming.",
   }),
+
   inpandigeBergingAanwezig: z.enum(["true", "false"], {
     error: (iss) =>
       iss.input === undefined
         ? "Geef aan of inpandige berging aanwezig is."
         : "Ongeldige waarde voor inpandige berging.",
   }),
+
   ruimteOpHetDakAanwezig: z.enum(["true", "false"], {
     error: (iss) =>
       iss.input === undefined
@@ -98,6 +101,7 @@ export const technicalFormSchema = z.object({
     .min(1, {
       error: "Het elektriciteitsverbruik per woning moet groter dan 0 zijn.",
     }),
+
   elektriciteitsverbruikVveTotaal: z.coerce
     .number({
       error: (iss) =>
@@ -132,12 +136,85 @@ export const technicalFormSchema = z.object({
         ? "Geef aan of het volledig gasloos is."
         : "Ongeldige waarde voor volledig gasloos.",
   }),
+
   wensTotKoelen: z.enum(["true", "false"], {
     error: (iss) =>
       iss.input === undefined
         ? "Geef aan of er een wens tot koelen is."
         : "Ongeldige waarde voor wens tot koelen.",
   }),
+
+  huidigSysteem: z.enum(["collectief", "individueel"], {
+    error: (iss) =>
+      iss.input === undefined
+        ? "Geef het huidige systeem aan."
+        : "Ongeldige waarde voor huidige systeem.",
+  }),
+
+  dubbelGlas: z.enum(["true", "false"], {
+    error: (iss) =>
+      iss.input === undefined
+        ? "Geef aan of er dubbel glas aanwezig is."
+        : "Ongeldige waarde voor dubbel glas.",
+  }),
+
+  beschikbareRuimteInWoningM2: z.coerce
+    .number({
+      error: (iss) =>
+        iss.input === undefined
+          ? "De beschikbare ruimte in de woning is verplicht."
+          : "Voer een geldig getal in voor de beschikbare ruimte in de woning.",
+    })
+    .min(0, {
+      error: "De beschikbare ruimte in de woning moet 0 of groter zijn.",
+    }),
+
+  beschikbareCollectieveRuimteBinnenM2: z.coerce
+    .number({
+      error: (iss) =>
+        iss.input === undefined
+          ? "De beschikbare collectieve ruimte binnen is verplicht."
+          : "Voer een geldig getal in voor de beschikbare collectieve ruimte binnen.",
+    })
+    .min(0, {
+      error: "De beschikbare collectieve ruimte binnen moet 0 of groter zijn.",
+    }),
+
+  beschikbareCollectieveRuimteBuitenM2: z.coerce
+    .number({
+      error: (iss) =>
+        iss.input === undefined
+          ? "De beschikbare collectieve ruimte buiten is verplicht."
+          : "Voer een geldig getal in voor de beschikbare collectieve ruimte buiten.",
+    })
+    .min(0, {
+      error: "De beschikbare collectieve ruimte buiten moet 0 of groter zijn.",
+    }),
+
+  jaarVervangen: z.coerce
+    .number({
+      error: (iss) =>
+        iss.input === undefined
+          ? "Het jaar voor het vervangen van het huidige warmsysteem is verplicht."
+          : "Voer een geldig getal in voor het jaar van het vervangen van het huidige warmsysteem.",
+    })
+    .min(new Date().getFullYear(), {
+      error:
+        "Het jaar voor het vervangen van het huidige warmsysteem is niet geldig.",
+    })
+    .max(new Date().getFullYear() + 50, {
+      error:
+        "Het jaar voor het vervangen van het huidige warmsysteem ligt te ver in de toekomst.",
+    }),
+
+  wtwAanwezig: z.enum(["true", "false"], {
+    error: (iss) =>
+      iss.input === undefined
+        ? "Geef aan of er een WTW-installatie aanwezig is."
+        : "Ongeldige waarde voor WTW-installatie aanwezig.",
+  }),
+
+  buurtcode: z.string().optional(),
 });
 
 export type FormValues = z.input<typeof technicalFormSchema>;

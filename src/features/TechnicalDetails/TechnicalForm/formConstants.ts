@@ -23,3 +23,9 @@ export const HEATING_TYPES = [
   { value: "cv_ketel", label: "CV-ketel" },
   { value: "warmtepomp", label: "Warmtepomp" },
 ];
+
+export const SYSTEM_TYPES = [
+  { value: "", label: "Maak een keuze" },
+  { value: "collectief", label: "Collectief" },
+  { value: "individueel", label: "Individueel" },
+];

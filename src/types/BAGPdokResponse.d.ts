@@ -12,6 +12,7 @@ declare type BAGPdokAddress = {
   huisletter?: string;
   huisnummertoevoeging?: string;
   score: float;
+  buurtcode: string;
 };
 
 declare type BAGPdokResponse = {

@@ -20,9 +20,10 @@ import type { CalculationResults } from "@/types/CalculationResult";
 
 type Props = {
   onNext: (result: CalculationResults) => void;
+  address?: BAGPdokAddress;
 };
 
-export default function TechnicalForm({ onNext }: Props) {
+export default function TechnicalForm({ onNext, address }: Props) {
   const searchParams = new URLSearchParams(window.location.search);
 
   const shouldUseDummyData = searchParams.get("dummy") === "true";
@@ -40,7 +41,10 @@ export default function TechnicalForm({ onNext }: Props) {
 
   const mutation = useMutation<CalculationResults, Error, FormValues>({
     mutationFn: (data: FormValues) =>
-      apiClient.post("/calculation-inputs/", mapFormValues(data)),
+      apiClient.post(
+        "/calculation-inputs/",
+        mapFormValues({ ...data, buurtcode: address?.buurtcode }),
+      ),
     onSuccess: (result) => {
       onNext(result);
     },
@@ -52,6 +56,7 @@ export default function TechnicalForm({ onNext }: Props) {
   const isLoading = mutation.isPending;
 
   const onSubmit = (data: FormValues) => {
+    // TODO: buurtcode
     mutation.mutate(data);
   };
 

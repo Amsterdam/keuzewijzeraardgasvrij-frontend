@@ -20,7 +20,7 @@ export default function TechnicalDetails({ address, onNext }: Props) {
           </Paragraph>
         </Grid.Cell>
       </Grid>
-      <TechnicalForm onNext={onNext} />
+      <TechnicalForm onNext={onNext} address={address} />
     </>
   );
 }
