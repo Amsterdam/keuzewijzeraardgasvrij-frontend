@@ -30,6 +30,6 @@ export function mapFormValues(formValues: FormValues) {
       formValues.beschikbareCollectieveRuimteBuitenM2,
     jaar_vervangen: formValues.jaarVervangen,
     wtw_aanwezig: formValues.wtwAanwezig,
-    buurtcode: "BU03636501",
+    buurtcode: formValues.buurtcode,
   };
 }
