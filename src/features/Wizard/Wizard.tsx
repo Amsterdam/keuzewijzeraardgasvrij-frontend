@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
-import { Grid, Paragraph } from "@amsterdam/design-system-react";
+import { Grid } from "@amsterdam/design-system-react";
 
 import { Steps } from "@/components";
-import { steps, dummyAddress } from "./steps.config.ts";
-import AddressSearch from "../AddressSearch/AddressSearch.tsx";
-import TechnicalDetails from "../TechnicalDetails/TechnicalDetails.tsx";
-import { DEFAULT_CONTENT_SPAN } from "@/constants.ts";
+import { steps, dummyAddress } from "./steps.config";
+import AddressSearch from "../AddressSearch/AddressSearch";
+import TechnicalDetails from "../TechnicalDetails/TechnicalDetails";
+import ResultsView from "../ResultsView/ResultsView";
+import { DEFAULT_CONTENT_SPAN } from "@/constants";
+import type { CalculationResults } from "@/types/CalculationResult";
 
 export default function Wizard() {
   const bagId = useMemo(() => {
@@ -17,6 +19,10 @@ export default function Wizard() {
 
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
+
+  const [results, setResults] = useState<CalculationResults | undefined>(
+    undefined,
+  );
 
   return (
     <Grid gapVertical="large" paddingBottom="x-large">
@@ -41,13 +47,16 @@ export default function Wizard() {
         <Grid.Cell span="all">
           <TechnicalDetails
             address={selectedAddress}
-            onNext={() => setCurrentStep(3)}
+            onNext={(results: CalculationResults) => {
+              setResults(results);
+              setCurrentStep(3);
+            }}
           />
         </Grid.Cell>
       )}
       {currentStep === 3 && (
         <Grid.Cell span="all">
-          <Paragraph>Succesvol resultaat!</Paragraph>
+          <ResultsView results={results} />
         </Grid.Cell>
       )}
     </Grid>

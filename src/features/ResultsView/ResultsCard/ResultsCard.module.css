@@ -1,0 +1,6 @@
+.card {
+  border: 2px solid rgba(38, 85, 115, 0.15);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+}

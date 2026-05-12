@@ -1,10 +1,11 @@
 import { Grid, Paragraph } from "@amsterdam/design-system-react";
 import TechnicalForm from "./TechnicalForm/TechnicalForm";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
+import type { CalculationResults } from "@/types/CalculationResult";
 
 type Props = {
   address?: BAGPdokAddress;
-  onNext: () => void;
+  onNext: (result: CalculationResults) => void;
 };
 
 export default function TechnicalDetails({ address, onNext }: Props) {
