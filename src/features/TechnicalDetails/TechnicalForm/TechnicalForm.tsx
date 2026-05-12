@@ -16,9 +16,10 @@ import { TechnicalFormEnergy } from "./sections/TechnicalFormEnergy";
 import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
 import { mapFormValues } from "./mapFormValues";
+import type { CalculationResults } from "@/types/CalculationResult";
 
 type Props = {
-  onNext: () => void;
+  onNext: (result: CalculationResults) => void;
 };
 
 export default function TechnicalForm({ onNext }: Props) {
@@ -37,12 +38,12 @@ export default function TechnicalForm({ onNext }: Props) {
     defaultValues,
   });
 
-  const mutation = useMutation({
+  const mutation = useMutation<CalculationResults, Error, FormValues>({
     mutationFn: (data: FormValues) =>
       apiClient.post("/calculation-inputs/", mapFormValues(data)),
-    onSuccess: (response) => {
-      console.log("Form submitted successfully:", response);
-      onNext();
+    onSuccess: (result) => {
+      console.log("Form submitted successfully:", result);
+      onNext(result);
     },
     onError: (error) => {
       console.error("Error submitting form:", error);
