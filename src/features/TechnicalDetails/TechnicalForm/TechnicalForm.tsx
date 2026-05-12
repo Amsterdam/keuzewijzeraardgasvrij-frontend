@@ -42,7 +42,6 @@ export default function TechnicalForm({ onNext }: Props) {
     mutationFn: (data: FormValues) =>
       apiClient.post("/calculation-inputs/", mapFormValues(data)),
     onSuccess: (result) => {
-      console.log("Form submitted successfully:", result);
       onNext(result);
     },
     onError: (error) => {
@@ -53,7 +52,6 @@ export default function TechnicalForm({ onNext }: Props) {
   const isLoading = mutation.isPending;
 
   const onSubmit = (data: FormValues) => {
-    console.log(" Submitting form with data:", data);
     mutation.mutate(data);
   };
 
