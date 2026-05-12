@@ -24,16 +24,13 @@ export function ResultsCard({ result, index }: Props) {
   return (
     <Column className={styles.card} gap="small">
       <StatusLegend label={result.naam} type={statusType} />
-      <Paragraph>{result.beschrijving}</Paragraph>
+      <Paragraph className="ams-mb-m">{result.beschrijving}</Paragraph>
       <Heading level={4}>Kostenindicatie</Heading>
-      <Paragraph>
+      <Paragraph className="ams-mb-m">
         € {roundToWholeNumber(result.kosten_per_woning_per_jaar)} per jaar per
         woning
       </Paragraph>
-      {result.redenen.length === 1 && (
-        <Paragraph>{result.redenen[0]}</Paragraph>
-      )}
-      {result.redenen.length > 1 && (
+      {result.redenen.length > 0 && (
         <>
           <Heading level={4}>Deze techniek is niet mogelijk vanwege:</Heading>
           <UnorderedList>

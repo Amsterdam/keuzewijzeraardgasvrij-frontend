@@ -1,5 +1,5 @@
 import { Heading, Grid } from "@amsterdam/design-system-react";
-import { SelectControl } from "@amsterdam/ee-ads-rhf";
+import { SelectControl, TextInputControl } from "@amsterdam/ee-ads-rhf";
 import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
@@ -15,8 +15,19 @@ export function TechnicalFormWishes({ isLoading }: Props) {
         paddingBottom="x-large"
         paddingTop="large"
         gapVertical="large"
-        className="no-padding-inline"
+        className="no-padding-inline align-items-end"
       >
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <TextInputControl<FormValues>
+            label="In welk jaar wilt u uw warmtesysteem vervangen?"
+            name="jaarVervangen"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            hideErrorMessage
+          />
+        </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
             label="Volledig gasloos"

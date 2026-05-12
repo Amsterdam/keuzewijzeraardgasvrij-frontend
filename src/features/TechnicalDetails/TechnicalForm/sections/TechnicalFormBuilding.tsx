@@ -19,7 +19,7 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
         paddingBottom="x-large"
         paddingTop="large"
         gapVertical="large"
-        className="no-padding-inline"
+        className="no-padding-inline align-items-end"
       >
         <Grid.Cell span={DEFAULT_SPAN}>
           <TextInputControl<FormValues>
@@ -103,6 +103,62 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             label="Type dak"
             name="typeDak"
             options={ROOF_TYPES}
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            style={{ width: "100%" }}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <SelectControl<FormValues>
+            label="Heeft u dubbel glas?"
+            name="dubbelGlas"
+            options={DEFAULT_OPTIONS_BOOLEAN}
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            style={{ width: "100%" }}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <TextInputControl<FormValues>
+            label="Hoeveel beschikbare ruimte heeft u in uw woning (m²)?"
+            name="beschikbareRuimteInWoningM2"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <TextInputControl<FormValues>
+            label="Hoeveel beschikbare collectieve ruimte heeft u binnen (m²)?"
+            name="beschikbareCollectieveRuimteBinnenM2"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <TextInputControl<FormValues>
+            label="Hoeveel beschikbare collectieve ruimte heeft u buiten (m²)?"
+            name="beschikbareCollectieveRuimteBuitenM2"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            registerOptions={{ required: true }}
+            disabled={isLoading}
+            hideErrorMessage
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <SelectControl<FormValues>
+            label="Is er een WTW-installatie aanwezig?"
+            name="wtwAanwezig"
+            options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
             disabled={isLoading}
             style={{ width: "100%" }}
