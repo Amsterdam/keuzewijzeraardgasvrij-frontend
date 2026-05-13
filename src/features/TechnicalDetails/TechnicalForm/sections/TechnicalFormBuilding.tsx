@@ -1,10 +1,6 @@
 import { Heading, Grid } from "@amsterdam/design-system-react";
 import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
-import {
-  DEFAULT_SPAN,
-  DEFAULT_OPTIONS_BOOLEAN,
-  ROOF_TYPES,
-} from "../formConstants";
+import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
 export function TechnicalFormBuilding() {
@@ -29,7 +25,7 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <TextInputControl<FormValues>
-            label="Bruto vloeroppervlak (BVO m²)"
+            label="Wat is het gebruiksoppervlak (GO) van het hele gebouw (m²)?"
             name="brutoVloeroppervlak"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -69,37 +65,6 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Inpandige berging aanwezig?"
-            name="inpandigeBergingAanwezig"
-            options={DEFAULT_OPTIONS_BOOLEAN}
-            registerOptions={{ required: true }}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
-            label="Ruimte op het dak aanwezig?"
-            name="ruimteOpHetDakAanwezig"
-            options={DEFAULT_OPTIONS_BOOLEAN}
-            registerOptions={{ required: true }}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
-            label="Type dak"
-            name="typeDak"
-            options={ROOF_TYPES}
-            registerOptions={{ required: true }}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
             label="Heeft u dubbel glas?"
             name="dubbelGlas"
             options={DEFAULT_OPTIONS_BOOLEAN}
@@ -110,7 +75,7 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <TextInputControl<FormValues>
-            label="Hoeveel beschikbare ruimte heeft u in uw woning (m²)?"
+            label="Hoeveel m² ruimte is er in de woningen beschikbaar voor installaties (per woning)?"
             name="beschikbareRuimteInWoningM2"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -120,7 +85,7 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <TextInputControl<FormValues>
-            label="Hoeveel beschikbare collectieve ruimte heeft u binnen (m²)?"
+            label="Hoeveel m² ruimte is er in het gebouw beschikbaar voor gedeelde installaties?"
             name="beschikbareCollectieveRuimteBinnenM2"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -130,7 +95,7 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <TextInputControl<FormValues>
-            label="Hoeveel beschikbare collectieve ruimte heeft u buiten (m²)?"
+            label="Hoeveel m² ruimte is er buiten (op een plat dak of in de tuin) beschikbaar voor gedeelde installaties?"
             name="beschikbareCollectieveRuimteBuitenM2"
             inputMode="numeric"
             pattern="[0-9]*"
