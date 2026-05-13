@@ -8,11 +8,7 @@ import {
 } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
-type Props = {
-  isLoading: boolean;
-};
-
-export function TechnicalFormEnergy({ isLoading }: Props) {
+export function TechnicalFormEnergy() {
   return (
     <>
       <Heading level={3}>Energetische gegevens</Heading>
@@ -28,7 +24,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             name="tapwaterOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -39,7 +34,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             name="kokenOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -51,7 +45,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -63,7 +56,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -75,7 +67,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -87,7 +78,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -98,7 +88,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             name="huidigeWarmtesysteem"
             options={HEATING_TYPES}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -109,7 +98,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             name="huidigSysteem"
             options={SYSTEM_TYPES}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />

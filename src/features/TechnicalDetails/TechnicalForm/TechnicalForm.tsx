@@ -7,23 +7,20 @@ import {
 } from "@amsterdam/design-system-react";
 import { FormProvider, mapErrorsToAlert } from "@amsterdam/ee-ads-rhf";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import type { UseMutationResult } from "@tanstack/react-query";
 
-import { apiClient } from "@/api";
 import { technicalFormSchema, type FormValues } from "./technicalFormSchema";
 import { TechnicalFormBuilding } from "./sections/TechnicalFormBuilding";
 import { TechnicalFormEnergy } from "./sections/TechnicalFormEnergy";
 import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
-import { mapFormValues } from "./mapFormValues";
 import type { CalculationResults } from "@/types/CalculationResult";
 
 type Props = {
-  onNext: (result: CalculationResults) => void;
-  address?: BAGPdokAddress;
+  mutation: UseMutationResult<CalculationResults, Error, FormValues>;
 };
 
-export default function TechnicalForm({ onNext, address }: Props) {
+export default function TechnicalForm({ mutation }: Props) {
   const searchParams = new URLSearchParams(window.location.search);
 
   const shouldUseDummyData = searchParams.get("dummy") === "true";
@@ -39,24 +36,7 @@ export default function TechnicalForm({ onNext, address }: Props) {
     defaultValues,
   });
 
-  const mutation = useMutation<CalculationResults, Error, FormValues>({
-    mutationFn: (data: FormValues) =>
-      apiClient.post(
-        "/calculation-inputs/",
-        mapFormValues({ ...data, buurtcode: address?.buurtcode }),
-      ),
-    onSuccess: (result) => {
-      onNext(result);
-    },
-    onError: (error) => {
-      console.error("Error submitting form:", error);
-    },
-  });
-
-  const isLoading = mutation.isPending;
-
   const onSubmit = (data: FormValues) => {
-    // TODO: buurtcode
     mutation.mutate(data);
   };
 
@@ -73,14 +53,11 @@ export default function TechnicalForm({ onNext, address }: Props) {
           data-testid="error-alert"
         />
       )}
-      <TechnicalFormBuilding isLoading={isLoading} />
-      <TechnicalFormEnergy isLoading={isLoading} />
-      <TechnicalFormWishes isLoading={isLoading} />
-
+      <TechnicalFormBuilding />
+      <TechnicalFormEnergy />
+      <TechnicalFormWishes />
       <ActionGroup>
-        <Button type="submit" disabled={isLoading}>
-          Volgende stap
-        </Button>
+        <Button type="submit">Volgende stap</Button>
       </ActionGroup>
     </FormProvider>
   );

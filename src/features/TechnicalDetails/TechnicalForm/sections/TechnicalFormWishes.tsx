@@ -3,11 +3,7 @@ import { SelectControl, TextInputControl } from "@amsterdam/ee-ads-rhf";
 import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
-type Props = {
-  isLoading: boolean;
-};
-
-export function TechnicalFormWishes({ isLoading }: Props) {
+export function TechnicalFormWishes() {
   return (
     <>
       <Heading level={3}>Wensen</Heading>
@@ -24,7 +20,6 @@ export function TechnicalFormWishes({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -34,7 +29,6 @@ export function TechnicalFormWishes({ isLoading }: Props) {
             name="volledigGasLoos"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -45,7 +39,6 @@ export function TechnicalFormWishes({ isLoading }: Props) {
             name="wensTotKoelen"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
