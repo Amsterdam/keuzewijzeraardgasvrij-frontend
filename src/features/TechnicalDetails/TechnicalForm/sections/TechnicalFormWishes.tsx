@@ -30,18 +30,7 @@ export function TechnicalFormWishes({ isLoading }: Props) {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Volledig gasloos"
-            name="volledigGasLoos"
-            options={DEFAULT_OPTIONS_BOOLEAN}
-            registerOptions={{ required: true }}
-            disabled={isLoading}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
-            label="Wens tot koelen"
+            label="Moet het warmtesysteem ook kunnen koelen?"
             name="wensTotKoelen"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}

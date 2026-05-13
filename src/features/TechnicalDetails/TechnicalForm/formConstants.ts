@@ -12,18 +12,6 @@ export const DEFAULT_OPTIONS_BOOLEAN = [
   { value: "false", label: "Nee" },
 ];
 
-export const ROOF_TYPES = [
-  { value: "", label: "Maak een keuze" },
-  { value: "plat_dak", label: "Plat dak" },
-  { value: "schuin_dak", label: "Schuin dak" },
-];
-
-export const HEATING_TYPES = [
-  { value: "", label: "Maak een keuze" },
-  { value: "cv_ketel", label: "CV-ketel" },
-  { value: "warmtepomp", label: "Warmtepomp" },
-];
-
 export const SYSTEM_TYPES = [
   { value: "", label: "Maak een keuze" },
   { value: "collectief", label: "Collectief" },
