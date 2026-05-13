@@ -3,11 +3,7 @@ import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
 import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
-type Props = {
-  isLoading: boolean;
-};
-
-export function TechnicalFormBuilding({ isLoading }: Props) {
+export function TechnicalFormBuilding() {
   return (
     <>
       <Heading level={3}>Bouwkundige gegevens</Heading>
@@ -24,7 +20,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -35,7 +30,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -46,7 +40,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -56,7 +49,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             name="mechanischeVentilatieAanwezig"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -67,7 +59,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             name="vloerverwarmingAanwezig"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -78,7 +69,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             name="dubbelGlas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
@@ -90,7 +80,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -101,7 +90,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -112,7 +100,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}
-            disabled={isLoading}
             hideErrorMessage
           />
         </Grid.Cell>
@@ -122,7 +109,6 @@ export function TechnicalFormBuilding({ isLoading }: Props) {
             name="wtwAanwezig"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
-            disabled={isLoading}
             style={{ width: "100%" }}
             hideErrorMessage
           />
