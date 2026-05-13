@@ -3,7 +3,6 @@ import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
 import {
   DEFAULT_SPAN,
   DEFAULT_OPTIONS_BOOLEAN,
-  HEATING_TYPES,
   SYSTEM_TYPES,
 } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
@@ -24,7 +23,7 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
       >
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Tapwater op gas?"
+            label="Wordt het tapwater in het gebouw verwarmt met gas?"
             name="tapwaterOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
@@ -35,7 +34,7 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Koken op gas?"
+            label="Wordt er in het gebouw gekookt met gas?"
             name="kokenOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
@@ -50,53 +49,6 @@ export function TechnicalFormEnergy({ isLoading }: Props) {
             name="gasverbruikVveTotaal"
             inputMode="numeric"
             pattern="[0-9]*"
-            registerOptions={{ required: true }}
-            disabled={isLoading}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <TextInputControl<FormValues>
-            label="Elektriciteitsverbruik 1 woning (kWh)"
-            name="elektriciteitsverbruikPerWoning"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            registerOptions={{ required: true }}
-            disabled={isLoading}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <TextInputControl<FormValues>
-            label="Elektriciteitsverbruik VvE totaal (kWh)"
-            name="elektriciteitsverbruikVveTotaal"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            registerOptions={{ required: true }}
-            disabled={isLoading}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <TextInputControl<FormValues>
-            label="Gecontracteerd vermogen (GTV, kW)"
-            name="gecontracteerdVermogen"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            registerOptions={{ required: true }}
-            disabled={isLoading}
-            style={{ width: "100%" }}
-            hideErrorMessage
-          />
-        </Grid.Cell>
-        <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
-            label="Huidige warmtesysteem"
-            name="huidigeWarmtesysteem"
-            options={HEATING_TYPES}
             registerOptions={{ required: true }}
             disabled={isLoading}
             style={{ width: "100%" }}

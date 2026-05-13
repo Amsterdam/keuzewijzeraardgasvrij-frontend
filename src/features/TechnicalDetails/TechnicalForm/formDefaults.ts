@@ -11,8 +11,6 @@ export function generateDummyData(): FormValues {
   const gasverbruikPerWoning = Math.floor(Math.random() * 2500) + 1000; // Random number between 1000 and 3500
   const gasverbruikVveTotaal =
     gasverbruikPerWoning * aantalWoningen + Math.floor(Math.random() * 10000); // Total gas consumption with some random variation
-  const elektriciteitsverbruikPerWoning =
-    Math.floor(Math.random() * 4500) + 1500; // Random number between 1500 and 6000
 
   return {
     bouwjaar: 1950 + Math.floor(Math.random() * 70),
@@ -20,19 +18,9 @@ export function generateDummyData(): FormValues {
     aantalWoningen: aantalWoningen,
     mechanischeVentilatieAanwezig: Math.random() > 0.5 ? "true" : "false",
     vloerverwarmingAanwezig: Math.random() > 0.5 ? "true" : "false",
-    inpandigeBergingAanwezig: Math.random() > 0.5 ? "true" : "false",
-    ruimteOpHetDakAanwezig: Math.random() > 0.5 ? "true" : "false",
-    typeDak: Math.random() > 0.5 ? "plat_dak" : "schuin_dak",
     tapwaterOpGas: Math.random() > 0.5 ? "true" : "false",
     kokenOpGas: Math.random() > 0.5 ? "true" : "false",
     gasverbruikVveTotaal: gasverbruikVveTotaal,
-    elektriciteitsverbruikPerWoning: elektriciteitsverbruikPerWoning,
-    elektriciteitsverbruikVveTotaal:
-      elektriciteitsverbruikPerWoning * aantalWoningen +
-      Math.floor(Math.random() * 10000), // Total electricity consumption with some random variation
-    gecontracteerdVermogen: Math.floor(Math.random() * 50) + 10,
-    huidigeWarmtesysteem: Math.random() > 0.5 ? "cv_ketel" : "warmtepomp",
-    volledigGasLoos: Math.random() > 0.5 ? "true" : "false",
     wensTotKoelen: Math.random() > 0.5 ? "true" : "false",
     huidigSysteem: Math.random() > 0.5 ? "collectief" : "individueel",
     dubbelGlas: Math.random() > 0.5 ? "true" : "false",
