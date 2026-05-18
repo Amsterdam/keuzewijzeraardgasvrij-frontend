@@ -18,8 +18,23 @@ function roundToWholeNumber(value: number): number {
   return Math.round(value);
 }
 
+function getStatusType(
+  redenen: CalculationResult["redenen"],
+  index: number,
+): "success" | "warning" | "error" {
+  if (redenen.length > 0) {
+    return "error";
+  } else if (index < 3) {
+    return "success";
+  } else if (index < 6) {
+    return "warning";
+  } else {
+    return "error";
+  }
+}
+
 export function ResultsCard({ result, index }: Props) {
-  const statusType = index < 3 ? "success" : index < 6 ? "warning" : "error";
+  const statusType = getStatusType(result.redenen, index);
 
   return (
     <Column className={styles.card} gap="small">
