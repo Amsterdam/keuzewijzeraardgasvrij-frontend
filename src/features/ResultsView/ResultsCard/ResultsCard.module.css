@@ -4,3 +4,38 @@
   padding: 1rem;
   background: #ffffff;
 }
+
+/* Collapsible details section */
+.details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+}
+
+.detailsOpen {
+  grid-template-rows: 1fr;
+}
+
+.detailsInner {
+  overflow: hidden;
+}
+
+.toggleButton:hover {
+  border: 1px solid transparent !important;
+}
+
+/* Force the icon span visible (framework sets hidden attribute) */
+.toggleButton :global(.ams-icon) {
+  display: inline-flex !important;
+}
+
+/* Chevron: rotate based on aria-expanded, no extra className needed */
+.toggleButton :global(.ams-icon) svg {
+  transition: transform 0.35s ease;
+  transform: rotate(0deg);
+}
+
+.toggleButton[aria-expanded="true"] :global(.ams-icon) svg {
+  transform: rotate(180deg);
+}
