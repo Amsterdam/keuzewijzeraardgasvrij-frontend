@@ -17,7 +17,7 @@ import { defaultFormValues, generateDummyData } from "./formDefaults";
 import type { CalculationResult } from "@/types/CalculationResult";
 
 type Props = {
-  mutation: UseMutationResult<CalculationResult, Error, FormValues>;
+  mutation: UseMutationResult<CalculationResult[], Error, FormValues>;
 };
 
 export default function TechnicalForm({ mutation }: Props) {

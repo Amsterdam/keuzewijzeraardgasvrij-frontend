@@ -11,11 +11,11 @@ import { LoadingAdvice } from "@/components";
 
 type Props = {
   address?: BAGPdokAddress;
-  onNext: (result: CalculationResult) => void;
+  onNext: (results: CalculationResult[]) => void;
 };
 
 export default function TechnicalDetails({ address, onNext }: Props) {
-  const mutation = useMutation<CalculationResult, Error, FormValues>({
+  const mutation = useMutation<CalculationResult[], Error, FormValues>({
     mutationFn: (data) =>
       apiClient.post(
         "/calculation-inputs/",
@@ -24,8 +24,8 @@ export default function TechnicalDetails({ address, onNext }: Props) {
           buurtcode: address?.buurtcode,
         }),
       ),
-    onSuccess: (result) => {
-      onNext(result);
+    onSuccess: (results) => {
+      onNext(results);
     },
     onError: (error) => {
       console.error("Error submitting form:", error);
