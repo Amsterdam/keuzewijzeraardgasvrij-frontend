@@ -1,5 +1,36 @@
 .
 ├── directory-tree.txt
+├── dist
+│   ├── app-icons
+│   │   ├── icon-192.png
+│   │   └── icon-512.png
+│   ├── app.webmanifest
+│   ├── assets
+│   │   ├── AmsterdamSans-Bold-B-eEYlh-.eot
+│   │   ├── AmsterdamSans-Bold-CN8ieXn0.woff
+│   │   ├── AmsterdamSans-BoldItalic-D8IgX2tE.eot
+│   │   ├── AmsterdamSans-BoldItalic-DGVdd_B4.woff2
+│   │   ├── AmsterdamSans-BoldItalic-Iks2g4JK.woff
+│   │   ├── AmsterdamSans-Bold-rXlH1Jru.woff2
+│   │   ├── AmsterdamSans-ExtraBold-0zPbyHYJ.eot
+│   │   ├── AmsterdamSans-ExtraBold-GN1-Za61.woff
+│   │   ├── AmsterdamSans-ExtraBold-hk2GetsY.woff2
+│   │   ├── AmsterdamSans-Italic-D8oH3P5t.woff
+│   │   ├── AmsterdamSans-Italic-Djuh9q7q.eot
+│   │   ├── AmsterdamSans-Italic-DW94SgHh.woff2
+│   │   ├── AmsterdamSans-Light-C9JJu_TU.eot
+│   │   ├── AmsterdamSans-Light-D_AncfMf.woff2
+│   │   ├── AmsterdamSans-Light-iEj3CW9t.woff
+│   │   ├── AmsterdamSans-Regular-BSIiMMb3.eot
+│   │   ├── AmsterdamSans-Regular-nwmnLZDN.woff
+│   │   ├── AmsterdamSans-Regular-QnM7etvR.woff2
+│   │   ├── index-59LLFRS9.css
+│   │   └── index-HQcCqxZx.js
+│   ├── favicon
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
+│   │   └── icon.svg
+│   └── index.html
 ├── docker-compose.yml
 ├── Dockerfile
 ├── entrypoint.sh
@@ -18,6 +49,7 @@
 ├── src
 │   ├── api
 │   │   ├── ApiClient.ts
+│   │   ├── index.ts
 │   │   └── pdok
 │   │       ├── pdokApi.ts
 │   │       ├── pdokHooks.ts
@@ -29,19 +61,43 @@
 │   │   ├── Header
 │   │   │   └── Header.tsx
 │   │   ├── index.ts
+│   │   ├── LoadingAdvice
+│   │   │   ├── LoadingAdvice.module.css
+│   │   │   └── LoadingAdvice.tsx
 │   │   ├── QueryParamLink
 │   │   │   └── QueryParamLink.tsx
+│   │   ├── StatusLegend
+│   │   │   ├── StatusLegend.module.css
+│   │   │   └── StatusLegend.tsx
 │   │   ├── Steps
 │   │   │   ├── Steps.module.css
 │   │   │   └── Steps.tsx
+│   │   ├── TestEnvironmentAlert
+│   │   │   └── TestEnvironmentAlert.tsx
 │   │   └── WelcomeSection
 │   │       └── WelcomeSection.tsx
+│   ├── config
+│   │   └── env.ts
+│   ├── constants.ts
 │   ├── features
 │   │   ├── AddressSearch
 │   │   │   └── AddressSearch.tsx
+│   │   ├── ResultsView
+│   │   │   ├── ResultsCard
+│   │   │   │   ├── ResultsCard.module.css
+│   │   │   │   ├── ResultsCard.tsx
+│   │   │   │   └── results.helpers.ts
+│   │   │   └── ResultsView.tsx
 │   │   ├── TechnicalDetails
 │   │   │   ├── TechnicalDetails.tsx
 │   │   │   └── TechnicalForm
+│   │   │       ├── formConstants.ts
+│   │   │       ├── formDefaults.ts
+│   │   │       ├── mapFormValues.ts
+│   │   │       ├── sections
+│   │   │       │   ├── TechnicalFormBuilding.tsx
+│   │   │       │   ├── TechnicalFormEnergy.tsx
+│   │   │       │   └── TechnicalFormWishes.tsx
 │   │   │       ├── technicalFormSchema.ts
 │   │   │       └── TechnicalForm.tsx
 │   │   └── Wizard
@@ -52,10 +108,11 @@
 │   ├── styles
 │   │   └── overrides.css
 │   └── types
-│       └── BAGPdokResponse.d.ts
+│       ├── BAGPdokResponse.d.ts
+│       └── CalculationResult.ts
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
 └── vite.config.ts
 
-20 directories, 39 files
+31 directories, 85 files

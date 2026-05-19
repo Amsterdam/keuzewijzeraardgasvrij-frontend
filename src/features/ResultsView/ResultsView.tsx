@@ -3,13 +3,15 @@ import { Grid, Heading, Paragraph, Row } from "@amsterdam/design-system-react";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import { StatusLegend } from "@/components";
 import ResultsCard from "./ResultsCard/ResultsCard";
-import type { CalculationResults } from "@/types/CalculationResult";
+import { staticResults } from "./results.static";
+import type { CalculationResult } from "@/types/CalculationResult";
 
 type Props = {
-  results?: CalculationResults;
+  results?: CalculationResult[];
 };
 
 export default function ResultsView({ results }: Props) {
+  const orderedResults = [...(results ?? []), ...staticResults];
   return (
     <>
       <Grid className="no-padding-inline">
@@ -28,7 +30,7 @@ export default function ResultsView({ results }: Props) {
             <StatusLegend label="Mogelijke keuze" type="warning" />
             <StatusLegend label="Keuze niet mogelijk" type="error" />
           </Row>
-          {results?.map((result, index) => (
+          {orderedResults.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />
           ))}
         </Grid.Cell>
