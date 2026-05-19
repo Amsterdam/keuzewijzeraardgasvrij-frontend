@@ -13,12 +13,18 @@ export function WelcomeSection() {
 
       <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
         <Paragraph>
-          Krijg met een paar antwoorden advies over welke mogelijkheden er zijn
-          om uw Vereniging van Eigenaren (VvE) te verduurzamen. We nemen u stap
-          voor stap mee om te bepalen welke maatregelen het meeste opleveren
-          voor uw VvE. Denk aan isolatie van gevels, dak en vloer,
-          hoogrendementsglas en HR-isolatie, maar ook aan zonnepanelen of een
-          warmtepomp. Zo wordt verduurzamen duidelijk en haalbaar voor iedereen.
+          De Keuzewijzer Aardgasvrij helpt Verenigingen van Eigenaars (VvE’s) om
+          een eerste inzicht te krijgen in geschikte warmtetechnieken voor hun
+          gebouw. In drie stappen worden verschillende individuele en
+          collectieve technieken vergeleken op basis van het huidige
+          gasverbruik, de eigenschappen van het gebouw en de locatie.
+          Voorbeelden van technieken zijn warmtepompen, stadsverwarming en
+          andere duurzame oplossingen. Dit resulteert in een rangschikking die
+          rekening houdt met totale kosten, ruimtelijke impact, benodigde
+          aanpassingen aan het gebouw en het extra elektrische vermogen. De
+          resultaten gaan uit van de aanname dat het gebouw voldoende geïsoleerd
+          is, zodat de technieken effectief en realistisch kunnen worden
+          toegepast.
         </Paragraph>
       </Grid.Cell>
     </Grid>
