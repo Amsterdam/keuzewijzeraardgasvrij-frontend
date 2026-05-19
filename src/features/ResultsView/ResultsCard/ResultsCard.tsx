@@ -64,21 +64,17 @@ export function ResultsCard({ result, index }: Props) {
           }
         >
           <div className={styles.detailsInner}>
-            <Heading level={4}>Kostenindicatie</Heading>
-            {result?.kosten_per_woning_per_jaar && (
-              <Paragraph className="ams-mb-l">
-                € {roundToWholeNumber(result.kosten_per_woning_per_jaar)} per
-                jaar per woning
-              </Paragraph>
-            )}
             {showCosts && (
-              <Paragraph className="ams-mb-l">
-                Tussen de €{" "}
-                {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)} en
-                de €{" "}
-                {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)} per
-                woning per jaar.
-              </Paragraph>
+              <>
+                <Heading level={4}>Kostenindicatie</Heading>
+                <Paragraph className="ams-mb-l">
+                  Tussen de €{" "}
+                  {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)}{" "}
+                  en de €{" "}
+                  {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)}{" "}
+                  per woning per jaar.
+                </Paragraph>
+              </>
             )}
             {result.redenen_niet_mogelijk?.length > 0 && (
               <div className="ams-mb-l">
