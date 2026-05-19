@@ -1,4 +1,4 @@
-import { Heading, Grid } from "@amsterdam/design-system-react";
+import { Heading, Grid, Link } from "@amsterdam/design-system-react";
 import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
 import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
@@ -28,7 +28,18 @@ export function TechnicalFormBuilding() {
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsTooltip
             label="Wat is het gebruiksoppervlak (GO) van het hele gebouw (m²)?"
-            content="U kunt het gebruiksoppervlak van alle woningen vinden op bagviewer.kadaster.nl"
+            content={
+              <div>
+                U kunt het gebruiksoppervlak van alle woningen vinden op{" "}
+                <Link
+                  href="https://bagviewer.kadaster.nl/"
+                  rel="external noopener"
+                  target="_blank"
+                >
+                  bagviewer.kadaster.nl
+                </Link>
+              </div>
+            }
           />
           <TextInputControl<FormValues>
             name="brutoVloeroppervlak"
