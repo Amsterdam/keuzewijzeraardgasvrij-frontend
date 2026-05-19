@@ -1,6 +1,7 @@
 export type CalculationResult = {
   naam: string;
   beschrijving: string;
+  beschrijving_url?: string;
   tco?: number;
   score?: number;
   is_mogelijk: boolean;
