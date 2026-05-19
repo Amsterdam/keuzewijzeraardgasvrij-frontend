@@ -7,7 +7,7 @@ import AddressSearch from "../AddressSearch/AddressSearch";
 import TechnicalDetails from "../TechnicalDetails/TechnicalDetails";
 import ResultsView from "../ResultsView/ResultsView";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
-import type { CalculationResults } from "@/types/CalculationResult";
+import type { CalculationResult } from "@/types/CalculationResult";
 
 export default function Wizard() {
   const bagId = useMemo(() => {
@@ -20,7 +20,7 @@ export default function Wizard() {
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
 
-  const [results, setResults] = useState<CalculationResults | undefined>(
+  const [results, setResults] = useState<CalculationResult[] | undefined>(
     undefined,
   );
 
@@ -47,7 +47,7 @@ export default function Wizard() {
         <Grid.Cell span="all">
           <TechnicalDetails
             address={selectedAddress}
-            onNext={(results: CalculationResults) => {
+            onNext={(results: CalculationResult[]) => {
               setResults(results);
               setCurrentStep(3);
             }}

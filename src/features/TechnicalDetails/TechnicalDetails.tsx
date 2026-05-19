@@ -4,18 +4,18 @@ import { useMutation } from "@tanstack/react-query";
 import { apiClient } from "@/api";
 import TechnicalForm from "./TechnicalForm/TechnicalForm";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
-import type { CalculationResults } from "@/types/CalculationResult";
+import type { CalculationResult } from "@/types/CalculationResult";
 import { mapFormValues } from "./TechnicalForm/mapFormValues";
 import type { FormValues } from "./TechnicalForm/technicalFormSchema";
 import { LoadingAdvice } from "@/components";
 
 type Props = {
   address?: BAGPdokAddress;
-  onNext: (result: CalculationResults) => void;
+  onNext: (result: CalculationResult) => void;
 };
 
 export default function TechnicalDetails({ address, onNext }: Props) {
-  const mutation = useMutation<CalculationResults, Error, FormValues>({
+  const mutation = useMutation<CalculationResult, Error, FormValues>({
     mutationFn: (data) =>
       apiClient.post(
         "/calculation-inputs/",

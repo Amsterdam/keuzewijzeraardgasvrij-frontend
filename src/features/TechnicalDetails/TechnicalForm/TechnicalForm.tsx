@@ -14,10 +14,10 @@ import { TechnicalFormBuilding } from "./sections/TechnicalFormBuilding";
 import { TechnicalFormEnergy } from "./sections/TechnicalFormEnergy";
 import { TechnicalFormWishes } from "./sections/TechnicalFormWishes";
 import { defaultFormValues, generateDummyData } from "./formDefaults";
-import type { CalculationResults } from "@/types/CalculationResult";
+import type { CalculationResult } from "@/types/CalculationResult";
 
 type Props = {
-  mutation: UseMutationResult<CalculationResults, Error, FormValues>;
+  mutation: UseMutationResult<CalculationResult, Error, FormValues>;
 };
 
 export default function TechnicalForm({ mutation }: Props) {
