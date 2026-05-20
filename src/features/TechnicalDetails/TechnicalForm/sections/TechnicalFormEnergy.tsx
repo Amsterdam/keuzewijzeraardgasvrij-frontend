@@ -6,7 +6,7 @@ import {
   SYSTEM_TYPES,
 } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
-import { AdsTooltip } from "@/components";
+import { AdsLabelWithTooltip } from "@/components";
 
 export function TechnicalFormEnergy() {
   return (
@@ -39,7 +39,7 @@ export function TechnicalFormEnergy() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Gasverbruik VvE totaal (m³)"
             content={
               <div>
@@ -82,7 +82,7 @@ export function TechnicalFormEnergy() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Wat is uw huidige systeem?"
             content={
               <div>

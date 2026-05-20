@@ -1,24 +1,20 @@
 import { useId, type ReactNode } from "react";
-import { Icon, Label } from "@amsterdam/design-system-react";
+import { Icon } from "@amsterdam/design-system-react";
 import { InfoIcon } from "@amsterdam/design-system-react-icons";
-import styles from "./AdsTooltip.module.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import styles from "./TooltipTrigger.module.css";
 
-type AdsTooltipProps = {
+type Props = {
   label: string;
   content: ReactNode;
 };
 
-export function AdsTooltip({ label, content }: AdsTooltipProps) {
+export function TooltipTrigger({ label, content }: Props) {
   const id = useId();
   const anchorId = `tooltip-anchor-${id}`;
 
   return (
-    <span className={styles.wrapper}>
-      <Label>
-        <span aria-describedby={anchorId}>{label}</span>
-      </Label>
-
+    <>
       <button
         id={anchorId}
         type="button"
@@ -41,6 +37,6 @@ export function AdsTooltip({ label, content }: AdsTooltipProps) {
         classNameArrow={styles.tooltipArrow}
         render={() => content}
       />
-    </span>
+    </>
   );
 }
