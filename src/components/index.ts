@@ -1,4 +1,3 @@
-export * from "./AdsTooltip/AdsTooltip";
 export * from "../features/AddressSearch/AddressSearch";
 export * from "./Footer/Footer";
 export * from "./Header/Header";
@@ -6,5 +5,7 @@ export * from "./LoadingAdvice/LoadingAdvice";
 export * from "./StatusLegend/StatusLegend";
 export * from "./Steps/Steps";
 export * from "./TestEnvironmentAlert/TestEnvironmentAlert";
+export * from "./Tooltip/AdsLabelWithTooltip";
+export * from "./Tooltip/TooltipTrigger";
 export * from "./QueryParamLink/QueryParamLink";
 export * from "./WelcomeSection/WelcomeSection";

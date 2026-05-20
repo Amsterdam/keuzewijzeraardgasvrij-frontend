@@ -31,10 +31,3 @@ export function getScoreReasonLabel(index: number): string {
 export function roundToWholeNumber(value: number): number {
   return Math.round(value);
 }
-
-export function getLastPartFromSlash(url: string): string {
-  const parts = url.split("/").filter(Boolean);
-  const lastPart = parts[parts.length - 1] || "";
-
-  return lastPart.charAt(0).toUpperCase() + lastPart.slice(1);
-}

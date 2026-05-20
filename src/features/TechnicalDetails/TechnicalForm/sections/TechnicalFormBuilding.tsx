@@ -2,7 +2,7 @@ import { Heading, Grid, Link } from "@amsterdam/design-system-react";
 import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
 import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
-import { AdsTooltip } from "@/components";
+import { AdsLabelWithTooltip } from "@/components";
 
 export function TechnicalFormBuilding() {
   return (
@@ -26,7 +26,7 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Wat is het gebruiksoppervlak (GO) van het hele gebouw (m²)?"
             content={
               <div>
@@ -62,7 +62,7 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Mechanische ventilatie aanwezig?"
             content="Dit is een systeem dat automatisch binnenlucht afvoert uit ruimtes zoals de keuken, badkamer en het toilet. Verse lucht komt meestal binnen via roosters of ramen, maar kan ook via de mechanische ventilatie worden aangevoerd."
           />
@@ -85,9 +85,9 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Heeft u dubbel glas?"
-            content="Klik op 'Ja' als meer dan 80% van het gebouw dubbel glas of beter heeft."
+            content={`Klik op "Ja" als meer dan 80% van het gebouw dubbel glas of beter heeft.`}
           />
           <SelectControl<FormValues>
             name="dubbelGlas"
@@ -109,7 +109,7 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Hoeveel m² ruimte is er in het gebouw beschikbaar voor gedeelde installaties?"
             content="Het gaat om collectieve technische ruimtes op de begane grond."
           />
@@ -123,7 +123,7 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Hoeveel m² ruimte is er buiten (op een plat dak of in de tuin) beschikbaar voor gedeelde installaties?"
             content="Het gaat om ruimte voor buitenunits zoals die van warmtepompen. De oppervlakte moet aaneengesloten zijn."
           />
@@ -137,7 +137,7 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <AdsTooltip
+          <AdsLabelWithTooltip
             label="Is er een WTW-installatie aanwezig?"
             content="Dit is een systeem dat warmte uit afgevoerde lucht hergebruikt om binnenkomende lucht voor te verwarmen. Hierdoor gaat minder warmte verloren en wordt energie bespaard."
           />

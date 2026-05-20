@@ -45,3 +45,9 @@
   align-items: center;
   gap: 0.25rem;
 }
+
+.headingWithTooltip {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
