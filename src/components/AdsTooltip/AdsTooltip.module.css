@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.triggerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  outline: none;
+}
+
+/* Vergroot raakoppervlak tot ~32px (WCAG 2.5.5) */
+.triggerButton::before {
+  content: "";
+  position: absolute;
+  inset: -0.375rem;
+}
+
+.triggerButton:focus-visible {
+  outline: 2px solid var(--ams-color-interactive);
+  outline-offset: 2px;
+}
+
+.triggerButton:hover {
+  color: var(--ams-color-interactive);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.tooltip {
+  width: max-content;
+  max-width: 18rem; /* 288px */
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ams-text-input-border-color);
+  border-radius: 0px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-family: var(--ams-paragraph-font-family);
+  line-height: 1.5;
+  word-break: break-word;
+  hyphens: auto;
+  pointer-events: auto;
+  background-color: var(--ams-color-background) !important;
+  opacity: 0.95 !important;
+}
+
+.tooltipArrow {
+  border-bottom: 1px solid var(--ams-text-input-border-color);
+  border-right: 1px solid var(--ams-text-input-border-color);
+}

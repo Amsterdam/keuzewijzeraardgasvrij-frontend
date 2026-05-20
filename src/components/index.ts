@@ -1,3 +1,4 @@
+export * from "./AdsTooltip/AdsTooltip";
 export * from "../features/AddressSearch/AddressSearch";
 export * from "./Footer/Footer";
 export * from "./Header/Header";

@@ -39,3 +39,9 @@
 .toggleButton[aria-expanded="true"] :global(.ams-icon) svg {
   transform: rotate(180deg);
 }
+
+.linkIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

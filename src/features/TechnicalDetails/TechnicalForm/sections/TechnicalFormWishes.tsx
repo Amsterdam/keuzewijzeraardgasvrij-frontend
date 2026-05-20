@@ -21,6 +21,7 @@ export function TechnicalFormWishes() {
             pattern="[0-9]*"
             registerOptions={{ required: true }}
             hideErrorMessage
+            placeholder="Vul in"
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>

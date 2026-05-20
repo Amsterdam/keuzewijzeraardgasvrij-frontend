@@ -3,25 +3,31 @@ import {
   Button,
   Column,
   Heading,
+  Icon,
+  Link,
   Paragraph,
   Row,
   UnorderedList,
 } from "@amsterdam/design-system-react";
-import { ChevronDownIcon } from "@amsterdam/design-system-react-icons";
+import {
+  ChevronDownIcon,
+  LinkExternalIcon,
+} from "@amsterdam/design-system-react-icons";
 
 import { StatusLegend } from "@/components";
 import type { CalculationResult } from "@/types/CalculationResult";
 import styles from "./ResultsCard.module.css";
-import { getScoreReasonLabel, getStatusType } from "./results.helpers";
+import {
+  getLastPartFromSlash,
+  getScoreReasonLabel,
+  getStatusType,
+  roundToWholeNumber,
+} from "./results.helpers";
 
 type Props = {
   result: CalculationResult;
   index: number;
 };
-
-function roundToWholeNumber(value: number): number {
-  return Math.round(value);
-}
 
 export function ResultsCard({ result, index }: Props) {
   const [isOpen, setIsOpen] = useState(index === 0);
@@ -51,6 +57,7 @@ export function ResultsCard({ result, index }: Props) {
       </Row>
 
       <Paragraph className="ams-mb-m">{result.beschrijving}</Paragraph>
+
       {isDynamicResult && (
         <div
           className={`${styles.details} ${isOpen ? styles.detailsOpen : ""}`}
@@ -65,16 +72,34 @@ export function ResultsCard({ result, index }: Props) {
         >
           <div className={styles.detailsInner}>
             {showCosts && (
-              <>
+              <div className="ams-mb-l">
                 <Heading level={4}>Kostenindicatie</Heading>
-                <Paragraph className="ams-mb-l">
+                <Paragraph>
                   Tussen de €{" "}
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)}{" "}
                   en de €{" "}
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)}{" "}
                   per woning per jaar.
                 </Paragraph>
-              </>
+              </div>
+            )}
+            {result.beschrijving_url && (
+              <div className="ams-mb-l">
+                <Heading level={4}>Meer informatie</Heading>
+                <Paragraph>
+                  <Link
+                    href={result.beschrijving_url}
+                    rel="external noopener"
+                    target="_blank"
+                  >
+                    <span className={styles.linkIcon}>
+                      <Icon svg={LinkExternalIcon} />{" "}
+                      {getLastPartFromSlash(result.beschrijving_url)} | Duurzaam
+                      Wonen Amsterdam
+                    </span>
+                  </Link>
+                </Paragraph>
+              </div>
             )}
             {result.redenen_niet_mogelijk?.length > 0 && (
               <div className="ams-mb-l">
