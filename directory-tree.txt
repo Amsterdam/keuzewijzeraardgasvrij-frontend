@@ -56,9 +56,6 @@
 │   │       └── pdokQueryBuilder.ts
 │   ├── App.tsx
 │   ├── components
-│   │   ├── AdsTooltip
-│   │   │   ├── AdsTooltip.module.css
-│   │   │   └── AdsTooltip.tsx
 │   │   ├── Footer
 │   │   │   └── Footer.tsx
 │   │   ├── Header
@@ -77,6 +74,11 @@
 │   │   │   └── Steps.tsx
 │   │   ├── TestEnvironmentAlert
 │   │   │   └── TestEnvironmentAlert.tsx
+│   │   ├── Tooltip
+│   │   │   ├── AdsLabelWithTooltip.module.css
+│   │   │   ├── AdsLabelWithTooltip.tsx
+│   │   │   ├── TooltipTrigger.module.css
+│   │   │   └── TooltipTrigger.tsx
 │   │   └── WelcomeSection
 │   │       └── WelcomeSection.tsx
 │   ├── config
@@ -119,4 +121,4 @@
 ├── tsconfig.node.json
 └── vite.config.ts
 
-32 directories, 88 files
+32 directories, 90 files
