@@ -18,16 +18,20 @@ import type { CalculationResult } from "@/types/CalculationResult";
 
 type Props = {
   mutation: UseMutationResult<CalculationResult[], Error, FormValues>;
+  savedValues?: Partial<FormValues>;
 };
 
-export default function TechnicalForm({ mutation }: Props) {
+export default function TechnicalForm({ mutation, savedValues }: Props) {
   const searchParams = new URLSearchParams(window.location.search);
 
   const shouldUseDummyData = searchParams.get("dummy") === "true";
 
   const defaultValues: DefaultValues<FormValues> = useMemo(() => {
+    if (savedValues && Object.keys(savedValues).length > 0) {
+      return savedValues as DefaultValues<FormValues>;
+    }
     return shouldUseDummyData ? generateDummyData() : defaultFormValues();
-  }, [shouldUseDummyData]);
+  }, [shouldUseDummyData, savedValues]);
 
   const form = useForm<FormValues>({
     mode: "onSubmit",

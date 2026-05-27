@@ -8,21 +8,22 @@ import TechnicalDetails from "../TechnicalDetails/TechnicalDetails";
 import ResultsView from "../ResultsView/ResultsView";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import type { CalculationResult } from "@/types/CalculationResult";
+import type { FormValues } from "../TechnicalDetails/TechnicalForm/technicalFormSchema";
 
 export default function Wizard() {
   const bagId = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get("bagId");
   }, []);
-
   const [currentStep, setCurrentStep] = useState(bagId ? 2 : 1);
-
   const [selectedAddress, setSelectedAddress] =
     useState<BAGPdokAddress>(dummyAddress);
-
   const [results, setResults] = useState<CalculationResult[] | undefined>(
     undefined,
   );
+  const [technicalFormValues, setTechnicalFormValues] = useState<
+    Partial<FormValues> | undefined
+  >(undefined);
 
   return (
     <Grid gapVertical="large" paddingBottom="x-large">
@@ -47,7 +48,12 @@ export default function Wizard() {
         <Grid.Cell span="all">
           <TechnicalDetails
             address={selectedAddress}
-            onNext={(results: CalculationResult[]) => {
+            savedValues={technicalFormValues}
+            onNext={(
+              results: CalculationResult[],
+              formValues: Partial<FormValues>,
+            ) => {
+              setTechnicalFormValues(formValues);
               setResults(results);
               setCurrentStep(3);
             }}
