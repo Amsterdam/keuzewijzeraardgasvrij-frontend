@@ -11,10 +11,18 @@ import { LoadingAdvice } from "@/components";
 
 type Props = {
   address?: BAGPdokAddress;
-  onNext: (results: CalculationResult[]) => void;
+  savedValues?: Partial<FormValues>;
+  onNext: (
+    results: CalculationResult[],
+    formValues: Partial<FormValues>,
+  ) => void;
 };
 
-export default function TechnicalDetails({ address, onNext }: Props) {
+export default function TechnicalDetails({
+  address,
+  savedValues,
+  onNext,
+}: Props) {
   const mutation = useMutation<CalculationResult[], Error, FormValues>({
     mutationFn: (data) =>
       apiClient.post(
@@ -24,8 +32,8 @@ export default function TechnicalDetails({ address, onNext }: Props) {
           buurtcode: address?.buurtcode,
         }),
       ),
-    onSuccess: (results) => {
-      onNext(results);
+    onSuccess: (results, variables) => {
+      onNext(results, variables);
     },
     onError: (error) => {
       console.error("Error submitting form:", error);
@@ -46,7 +54,7 @@ export default function TechnicalDetails({ address, onNext }: Props) {
           </Paragraph>
         </Grid.Cell>
       </Grid>
-      <TechnicalForm mutation={mutation} />
+      <TechnicalForm mutation={mutation} savedValues={savedValues} />
     </>
   );
 }
