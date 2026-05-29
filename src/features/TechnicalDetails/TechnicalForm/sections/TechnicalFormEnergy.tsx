@@ -20,7 +20,7 @@ export function TechnicalFormEnergy() {
       >
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Wordt het tapwater in het gebouw verwarmt met gas?"
+            label="Wordt het tapwater in het gebouw verwarmd met gas?"
             name="tapwaterOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
