@@ -23,3 +23,25 @@ export function mapFormValues(formValues: FormValues) {
     buurtcode: formValues.buurtcode,
   };
 }
+
+export type PrefillResponse = {
+  bruto_vloeroppervlak?: number | null;
+  aantal_woningen?: number | null;
+  bouwjaar?: number | null;
+  gasverbruik_vve_totaal?: number | null;
+};
+
+export function mapPrefillResponse(data: PrefillResponse): Partial<FormValues> {
+  return {
+    ...(data.bruto_vloeroppervlak != null && {
+      brutoVloeroppervlak: data.bruto_vloeroppervlak,
+    }),
+    ...(data.aantal_woningen != null && {
+      aantalWoningen: data.aantal_woningen,
+    }),
+    ...(data.bouwjaar != null && { bouwjaar: data.bouwjaar }),
+    ...(data.gasverbruik_vve_totaal != null && {
+      gasverbruikVveTotaal: data.gasverbruik_vve_totaal,
+    }),
+  };
+}

@@ -1,11 +1,15 @@
 import { Grid, Paragraph } from "@amsterdam/design-system-react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { apiClient } from "@/api";
 import TechnicalForm from "./TechnicalForm/TechnicalForm";
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import type { CalculationResult } from "@/types/CalculationResult";
-import { mapFormValues } from "./TechnicalForm/mapFormValues";
+import {
+  mapFormValues,
+  mapPrefillResponse,
+  type PrefillResponse,
+} from "./TechnicalForm/mapFormValues";
 import type { FormValues } from "./TechnicalForm/technicalFormSchema";
 import { LoadingAdvice } from "@/components";
 
@@ -23,6 +27,19 @@ export default function TechnicalDetails({
   savedValues,
   onNext,
 }: Props) {
+  const bagId = address?.adresseerbaarobject_id;
+
+  const prefillQuery = useQuery<Partial<FormValues>, Error>({
+    queryKey: ["calculation-inputs-prefill", bagId],
+    queryFn: async () => {
+      const data = await apiClient.get<PrefillResponse>(
+        `/calculation-inputs/prefill/${bagId}/`,
+      );
+      return mapPrefillResponse(data);
+    },
+    enabled: !!bagId && !savedValues, // skip if user already navigated back
+  });
+
   const mutation = useMutation<CalculationResult[], Error, FormValues>({
     mutationFn: (data) =>
       apiClient.post(
@@ -40,7 +57,7 @@ export default function TechnicalDetails({
     },
   });
 
-  if (mutation.isPending) {
+  if (prefillQuery.isLoading || mutation.isPending) {
     return <LoadingAdvice />;
   }
   return (
@@ -54,7 +71,10 @@ export default function TechnicalDetails({
           </Paragraph>
         </Grid.Cell>
       </Grid>
-      <TechnicalForm mutation={mutation} savedValues={savedValues} />
+      <TechnicalForm
+        mutation={mutation}
+        savedValues={savedValues ?? prefillQuery.data}
+      />
     </>
   );
 }
