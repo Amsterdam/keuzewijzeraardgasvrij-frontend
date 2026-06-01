@@ -57,8 +57,6 @@ export default function TechnicalDetails({
     },
   });
 
-  console.log("prefillQuery", prefillQuery.data);
-
   if (prefillQuery.isLoading || mutation.isPending) {
     return <LoadingAdvice />;
   }
