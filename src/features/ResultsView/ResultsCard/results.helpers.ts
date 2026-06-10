@@ -1,30 +1,19 @@
 import type { CalculationResult } from "@/types/CalculationResult";
 
-const TOP_RANK_LIMIT = 3;
-const MID_RANK_LIMIT = 6;
+const GOOD_SCORE_THRESHOLD = 7.5;
 
 export function getStatusType(
   is_mogelijk: CalculationResult["is_mogelijk"],
-  index: number,
+  score: number | undefined,
 ): "success" | "warning" | "error" {
+  const safeScore = score ?? 0;
+
   if (!is_mogelijk) {
     return "error";
-  } else if (index < TOP_RANK_LIMIT) {
+  } else if (safeScore > GOOD_SCORE_THRESHOLD) {
     return "success";
-  } else if (index < MID_RANK_LIMIT) {
+  } else {
     return "warning";
-  } else {
-    return "error";
-  }
-}
-
-export function getScoreReasonLabel(index: number): string {
-  if (index < TOP_RANK_LIMIT) {
-    return "Deze techniek scoort goed vanwege:";
-  } else if (index < MID_RANK_LIMIT) {
-    return "Deze techniek scoort gemiddeld vanwege:";
-  } else {
-    return "Deze techniek scoort slecht vanwege:";
   }
 }
 
