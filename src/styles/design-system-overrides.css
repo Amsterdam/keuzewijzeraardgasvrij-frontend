@@ -1,0 +1,11 @@
+/* Overrides for the Amsterdam Design System */
+
+:root {
+  --ams-page-background-color: #fff;
+  --ams-grid-cell-padding-block: 0;
+  --ams-grid-cell-padding-inline: 0;
+}
+
+.ams-page-footer__spotlight .ams-grid__cell {
+  background-color: transparent;
+}

@@ -17,11 +17,7 @@ import {
 import { StatusLegend, TooltipTrigger } from "@/components";
 import type { CalculationResult } from "@/types/CalculationResult";
 import styles from "./ResultsCard.module.css";
-import {
-  getScoreReasonLabel,
-  getStatusType,
-  roundToWholeNumber,
-} from "./results.helpers";
+import { getStatusType, roundToWholeNumber } from "./results.helpers";
 
 type Props = {
   result: CalculationResult;
@@ -44,8 +40,7 @@ export function ResultsCard({ result, index }: Props) {
     result.kosten_per_woning_per_jaar_laag > 0 &&
     result.kosten_per_woning_per_jaar_hoog > 0;
 
-  const statusType = getStatusType(result.is_mogelijk, index);
-  const scoreReasonLabel = getScoreReasonLabel(index);
+  const statusType = getStatusType(result.is_mogelijk, result.score);
 
   // Keep --details-height in sync with actual content height,
   // including after the initial mount when ref is first available.
@@ -140,7 +135,9 @@ export function ResultsCard({ result, index }: Props) {
 
             {result.redenen_score?.length > 0 && (
               <div>
-                <Heading level={4}>{scoreReasonLabel}</Heading>
+                <Heading level={4}>
+                  Eigenschappen ten opzichte van de andere technieken
+                </Heading>
                 <UnorderedList>
                   {result.redenen_score.map((reden) => (
                     <UnorderedList.Item key={reden}>{reden}</UnorderedList.Item>
