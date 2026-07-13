@@ -83,6 +83,13 @@ export function ResultsCard({ result, index }: Props) {
           ref={detailsRef}
         >
           <div className={styles.detailsInner}>
+            {result.warmteprogramma_tekst && (
+              <div className="ams-mb-l">
+                <Heading level={4}>Transitievisie warmte</Heading>
+                <Paragraph>{result.warmteprogramma_tekst}</Paragraph>
+              </div>
+            )}
+
             {showCosts && (
               <div className="ams-mb-l">
                 <div className={styles.headingWithTooltip}>
@@ -134,7 +141,7 @@ export function ResultsCard({ result, index }: Props) {
             )}
 
             {result.redenen_score?.length > 0 && (
-              <div>
+              <div className="ams-mb-l">
                 <Heading level={4}>
                   Eigenschappen ten opzichte van de andere technieken
                 </Heading>
@@ -143,6 +150,13 @@ export function ResultsCard({ result, index }: Props) {
                     <UnorderedList.Item key={reden}>{reden}</UnorderedList.Item>
                   ))}
                 </UnorderedList>
+              </div>
+            )}
+
+            {result.omgevingsvergunning && (
+              <div>
+                <Heading level={4}>Omgevingsvergunning</Heading>
+                <Paragraph>{result.omgevingsvergunning}</Paragraph>
               </div>
             )}
           </div>

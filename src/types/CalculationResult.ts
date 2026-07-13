@@ -1,6 +1,8 @@
 export type CalculationResult = {
   naam: string;
   beschrijving: string;
+  warmteprogramma_tekst?: string;
+  omgevingsvergunning?: string;
   beschrijving_url?: string;
   beschrijving_url_title?: string;
   tco?: number;
