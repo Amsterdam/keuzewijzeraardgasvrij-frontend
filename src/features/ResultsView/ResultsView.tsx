@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Grid, Heading, Paragraph, Row } from "@amsterdam/design-system-react";
 
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import { StatusLegend } from "@/components";
+import IsolatieDialog from "./IsolatieDialog/IsolatieDialog";
 import ResultsCard from "./ResultsCard/ResultsCard";
 import { staticResults } from "./results.static";
 import type { CalculationResult } from "@/types/CalculationResult";
@@ -12,8 +14,26 @@ type Props = {
 
 export default function ResultsView({ results }: Props) {
   const orderedResults = [...(results ?? []), ...staticResults];
+  const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
+    useState(false);
+  const shouldShowIsolatiePopup = Boolean(
+    results?.some((result) => result.isolatie_popup),
+  );
+
+  useEffect(() => {
+    setIsIsolatiePopupDismissed(false);
+  }, [results]);
+
+  const dismissIsolatieDialog = () => {
+    setIsIsolatiePopupDismissed(true);
+  };
+
   return (
     <>
+      <IsolatieDialog
+        isOpen={shouldShowIsolatiePopup && !isIsolatiePopupDismissed}
+        onDismiss={dismissIsolatieDialog}
+      />
       <Grid className="no-padding-inline">
         <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
           <Heading level={2} className="ams-mb-m">
