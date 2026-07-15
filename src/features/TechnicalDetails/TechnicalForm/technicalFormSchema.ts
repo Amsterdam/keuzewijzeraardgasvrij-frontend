@@ -113,15 +113,28 @@ export const technicalFormSchema = z.object({
       error: "De beschikbare collectieve ruimte binnen moet 0 of groter zijn.",
     }),
 
-  beschikbareCollectieveRuimteBuitenM2: z.coerce
+  beschikbareCollectieveRuimteTuinM2: z.coerce
     .number({
       error: (iss) =>
         iss.input === undefined
-          ? "De beschikbare collectieve ruimte buiten is verplicht."
-          : "Voer een geldig getal in voor de beschikbare collectieve ruimte buiten.",
+          ? "De beschikbare collectieve ruimte in de tuin is verplicht."
+          : "Voer een geldig getal in voor de beschikbare collectieve ruimte in de tuin.",
     })
     .min(0, {
-      error: "De beschikbare collectieve ruimte buiten moet 0 of groter zijn.",
+      error:
+        "De beschikbare collectieve ruimte in de tuin moet 0 of groter zijn.",
+    }),
+
+  beschikbareCollectieveRuimteDakM2: z.coerce
+    .number({
+      error: (iss) =>
+        iss.input === undefined
+          ? "De beschikbare collectieve ruimte op het dak is verplicht."
+          : "Voer een geldig getal in voor de beschikbare collectieve ruimte op het dak.",
+    })
+    .min(0, {
+      error:
+        "De beschikbare collectieve ruimte op het dak moet 0 of groter zijn.",
     }),
 
   jaarVervangen: z.coerce

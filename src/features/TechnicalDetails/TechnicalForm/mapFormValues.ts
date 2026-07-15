@@ -16,8 +16,10 @@ export function mapFormValues(formValues: FormValues) {
     beschikbare_ruimte_in_woning_m2: formValues.beschikbareRuimteInWoningM2,
     beschikbare_collectieve_ruimte_binnen_m2:
       formValues.beschikbareCollectieveRuimteBinnenM2,
-    beschikbare_collectieve_ruimte_buiten_m2:
-      formValues.beschikbareCollectieveRuimteBuitenM2,
+    beschikbare_collectieve_ruimte_tuin_m2:
+      formValues.beschikbareCollectieveRuimteTuinM2,
+    beschikbare_collectieve_ruimte_dak_m2:
+      formValues.beschikbareCollectieveRuimteDakM2,
     jaar_vervangen: formValues.jaarVervangen,
     wtw_aanwezig: formValues.wtwAanwezig,
     buurtcode: formValues.buurtcode,

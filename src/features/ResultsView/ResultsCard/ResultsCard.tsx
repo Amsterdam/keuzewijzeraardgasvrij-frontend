@@ -31,6 +31,15 @@ export function ResultsCard({ result, index }: Props) {
   const [isOpen, setIsOpen] = useState(index === 0);
   const detailsRef = useRef<HTMLDivElement>(null);
   const detailsId = `results-card-details-${index}`;
+  const tuinTekst =
+    result.past_in_tuin === true
+      ? "De bodembron past waarschijnlijk in de tuin."
+      : result.past_in_tuin === false
+        ? "De bodembron past waarschijnlijk niet in de tuin. In sommige gevallen is het mogelijk om de bodembron in de openbare ruimte te plaatsen. Hiervoor kunnen extra kosten en vergunningen nodig zijn. Deze kosten zijn hieronder niet meegerekend."
+        : null;
+  const hasTuinOfVergunningTekst = Boolean(
+    tuinTekst || result.omgevingsvergunning,
+  );
 
   // isDynamicResult: result has a score, meaning it is not a static result
   // with missing properties like redenen_score and kosten.
@@ -74,7 +83,9 @@ export function ResultsCard({ result, index }: Props) {
         )}
       </Row>
 
-      <Paragraph className="ams-mb-m">{result.beschrijving}</Paragraph>
+      <Paragraph className={hasTuinOfVergunningTekst ? undefined : "ams-mb-m"}>
+        {result.beschrijving}
+      </Paragraph>
 
       {isDynamicResult && (
         <div
@@ -83,6 +94,20 @@ export function ResultsCard({ result, index }: Props) {
           ref={detailsRef}
         >
           <div className={styles.detailsInner}>
+            {tuinTekst && (
+              <Paragraph
+                className={result.omgevingsvergunning ? "ams-mb-m" : undefined}
+              >
+                {tuinTekst}
+              </Paragraph>
+            )}
+
+            {result.omgevingsvergunning && (
+              <div className="ams-mb-l">
+                <Paragraph>{result.omgevingsvergunning}</Paragraph>
+              </div>
+            )}
+
             {result.warmteprogramma_tekst && (
               <div className="ams-mb-l">
                 <Heading level={4}>Transitievisie warmte</Heading>
@@ -150,13 +175,6 @@ export function ResultsCard({ result, index }: Props) {
                     <UnorderedList.Item key={reden}>{reden}</UnorderedList.Item>
                   ))}
                 </UnorderedList>
-              </div>
-            )}
-
-            {result.omgevingsvergunning && (
-              <div>
-                <Heading level={4}>Omgevingsvergunning</Heading>
-                <Paragraph>{result.omgevingsvergunning}</Paragraph>
               </div>
             )}
           </div>

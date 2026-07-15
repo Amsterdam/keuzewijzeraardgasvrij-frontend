@@ -124,11 +124,25 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Hoeveel m² ruimte is er buiten (op een plat dak of in de tuin) beschikbaar voor gedeelde installaties?"
-            content="Het gaat om ruimte voor buitenunits zoals die van warmtepompen. De oppervlakte moet aaneengesloten zijn."
+            label="Hoeveel m² ruimte is er in de tuin beschikbaar voor gedeelde installaties?"
+            content="Het gaat om ruimte in de tuin voor gedeelde installaties. De oppervlakte moet aaneengesloten zijn."
           />
           <TextInputControl<FormValues>
-            name="beschikbareCollectieveRuimteBuitenM2"
+            name="beschikbareCollectieveRuimteTuinM2"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            registerOptions={{ required: true }}
+            hideErrorMessage
+            placeholder="Vul in"
+          />
+        </Grid.Cell>
+        <Grid.Cell span={DEFAULT_SPAN}>
+          <AdsLabelWithTooltip
+            label="Hoeveel m² ruimte is er op het dak beschikbaar voor gedeelde installaties?"
+            content="Het gaat om ruimte op een plat dak voor gedeelde installaties. De oppervlakte moet aaneengesloten zijn."
+          />
+          <TextInputControl<FormValues>
+            name="beschikbareCollectieveRuimteDakM2"
             inputMode="numeric"
             pattern="[0-9]*"
             registerOptions={{ required: true }}

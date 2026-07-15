@@ -26,7 +26,8 @@ export function generateDummyData(): FormValues {
     dubbelGlas: Math.random() > 0.5 ? "true" : "false",
     beschikbareRuimteInWoningM2: Math.floor(Math.random() * 11),
     beschikbareCollectieveRuimteBinnenM2: Math.floor(Math.random() * 51),
-    beschikbareCollectieveRuimteBuitenM2: Math.floor(Math.random() * 51),
+    beschikbareCollectieveRuimteTuinM2: Math.floor(Math.random() * 51),
+    beschikbareCollectieveRuimteDakM2: Math.floor(Math.random() * 51),
     jaarVervangen: new Date().getFullYear() + Math.floor(Math.random() * 21),
     wtwAanwezig: Math.random() > 0.5 ? "true" : "false",
   };
