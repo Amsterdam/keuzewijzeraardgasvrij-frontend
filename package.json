@@ -1,16 +1,20 @@
 {
   "name": "keuzewijzeraardgasvrij-frontend",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "vite",
-    "acc": "env-cmd -f .env.acceptance vite",
+    "acc": "vite --mode acceptance",
     "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "node -e \"try{require.resolve('husky')}catch(e){process.exit(0)}\" && husky"
   },
   "dependencies": {
     "@amsterdam/design-system-assets": "^2.3.0",
@@ -21,32 +25,36 @@
     "@amsterdam/ee-ads-rhf": "^0.0.5",
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.99.0",
+    "qs": "^6.15.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-tooltip": "^6.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^26.1.2",
     "@types/qs": "^6.15.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "env-cmd": "^11.0.0",
-    "qs": "^6.15.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-tooltip": "^6.0.3",
-    "ts-node": "^10.9.2",
-    "vite": "^8.0.8",
-    "zod": "^4.3.6"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
     "husky": "^9.1.7",
+    "jsdom": "^30.0.0",
     "lint-staged": "^17.0.5",
     "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
     "typescript": "~6.0.2",
-    "typescript-eslint": "^8.58.1"
+    "typescript-eslint": "^8.58.1",
+    "vite": "^8.0.8",
+    "vitest": "^4.1.10"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
