@@ -25,7 +25,7 @@ type Props = {
 };
 
 const TOOLTIP_KOSTENINDICATIE =
-  "Dit zijn de energiekosten, aanschafkosten, installatiekosten en onderhoudskosten, verdeeld over het aantal woningen en omgerekend naar een gemiddelde per jaar. Inflatie is hierbij niet meegenomen. De bedragen dienen als indicatie om de verschillende technieken met elkaar te vergelijken.";
+  "Deze kosten zijn een schatting per woning per jaar. Hierin zitten energiekosten, aanschafkosten, installatiekosten en onderhoudskosten. Inflatie is hierbij niet meegenomen. Dit is een schatting om systemen te vergelijken.";
 
 export function ResultsCard({ result, index }: Props) {
   const [isOpen, setIsOpen] = useState(index === 0);
@@ -136,7 +136,7 @@ export function ResultsCard({ result, index }: Props) {
 
             {result.beschrijving_url && (
               <div className="ams-mb-l">
-                <Heading level={4}>Meer informatie</Heading>
+                <Heading level={4}>Meer informatie en vervolgstappen</Heading>
                 <Paragraph>
                   <Link
                     href={result.beschrijving_url}

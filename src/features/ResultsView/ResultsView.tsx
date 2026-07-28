@@ -40,15 +40,17 @@ export default function ResultsView({ results }: Props) {
             Adviezen voor warmtesystemen
           </Heading>
           <Paragraph className="ams-mb-l">
-            Hieronder staan van boven naar beneden verschillende warmtesystemen
-            gerangschikt op basis van uw input. Bovenaan het meest aansluitend
-            en onderaan het minst. Beweeg met uw muis over de oplossing heen
-            voor meer informatie en uitleg. De kleuren geven het volgende aan:
+            Op basis van uw gegevens ziet u hieronder welke warmtesystemen het
+            beste bij uw gebouw passen. Bovenaan wat het beste past, onderaan
+            wat het minst past. Klik met uw muis op een systeem voor meer
+            uitleg. De kleuren betekenen: best beoordeeld (groen), gemiddeld
+            beoordeeld (oranje) en niet mogelijk (rood). In sommige situaties
+            zijn de best beoordeelde warmtesystemen niet mogelijk.
           </Paragraph>
           <Row wrap gap="x-large" className="ams-mb-xl">
-            <StatusLegend label="Aanbevolen keuze" type="success" />
-            <StatusLegend label="Mogelijke keuze" type="warning" />
-            <StatusLegend label="Keuze niet mogelijk" type="error" />
+            <StatusLegend label="Best beoordeeld" type="success" />
+            <StatusLegend label="Gemiddeld beoordeeld" type="warning" />
+            <StatusLegend label="Niet mogelijk" type="error" />
           </Row>
           {orderedResults.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />

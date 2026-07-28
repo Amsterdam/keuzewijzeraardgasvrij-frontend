@@ -48,7 +48,7 @@ function AddressSearch({ onSelectAddress }: Props) {
       {showResultsInfo && (
         <Paragraph className="ams-mb-m">
           <strong>{results.length}</strong>{" "}
-          {results.length === 1 ? "adres" : "adressen"} gevonden voor ‘{query}’
+          {results.length === 1 ? "adres" : "adressen"} gevonden voor "{query}"
           {results.length >= 10 && " (maximaal 10 getoond)"}
         </Paragraph>
       )}
