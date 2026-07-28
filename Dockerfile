@@ -8,7 +8,7 @@ ENV DIR=/var/www
 WORKDIR $DIR
 
 COPY package*.json ./
-RUN npm ci --omit=dev --ignore-scripts
+RUN npm ci --ignore-scripts
 
 COPY . .
 
