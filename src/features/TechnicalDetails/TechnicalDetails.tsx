@@ -65,9 +65,9 @@ export default function TechnicalDetails({
       <Grid className="no-padding-inline">
         <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
           <Paragraph className="ams-mb-m">
-            Op basis van <strong>{address?.weergavenaam}</strong> hebben wij een
-            aantal gegevens opgehaald. Controleer deze gegevens en vul ze aan
-            waar nodig.
+            Op basis van <strong>{address?.weergavenaam}</strong> hebben wij uw
+            gegevens ingevuld. Controleer deze gegevens en vul ze aan waar
+            nodig.
           </Paragraph>
         </Grid.Cell>
       </Grid>

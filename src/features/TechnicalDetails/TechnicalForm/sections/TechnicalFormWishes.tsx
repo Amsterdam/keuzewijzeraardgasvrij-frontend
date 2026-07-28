@@ -26,7 +26,7 @@ export function TechnicalFormWishes() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Moet het warmtesysteem ook kunnen koelen?"
+            label="Moet het nieuwe warmtesysteem ook kunnen koelen?"
             name="wensTotKoelen"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}

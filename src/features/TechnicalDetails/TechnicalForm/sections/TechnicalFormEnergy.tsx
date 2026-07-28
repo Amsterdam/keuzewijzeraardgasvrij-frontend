@@ -20,7 +20,7 @@ export function TechnicalFormEnergy() {
       >
         <Grid.Cell span={DEFAULT_SPAN}>
           <SelectControl<FormValues>
-            label="Wordt het tapwater in het gebouw verwarmd met gas?"
+            label="Wordt het water in het gebouw verwarmd met gas?"
             name="tapwaterOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
@@ -40,15 +40,15 @@ export function TechnicalFormEnergy() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Gasverbruik VvE totaal (m³)"
+            label="Totaal gasverbruik van de VvE (m³)"
             content={
               <div>
-                U kunt dit op meerdere manieren achterhalen:
+                U kunt dit op meerdere manieren vinden:
                 <br />
                 <ul>
                   <li>
-                    U kunt het gasverbruik vinden op de eindejaarsafrekening van
-                    het gebouw (bij een collectief systeem).
+                    Op de eindejaarsafrekening van het gebouw (bij een
+                    collectief systeem).
                   </li>
                   <li>
                     U kunt alle eindejaarsafrekeningen van de bewoners optellen
@@ -65,7 +65,8 @@ export function TechnicalFormEnergy() {
                       website van Liander
                     </Link>{" "}
                     en download het bestand "Kleinverbruikgegevens" van het
-                    vorige jaar.
+                    vorige jaar. Het gemiddelde gasverbruik per woning staat in
+                    kolom "SJA GEMIDDELD".
                   </li>
                 </ul>
               </div>

@@ -27,10 +27,10 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Wat is het gebruiksoppervlak (GO) van het hele gebouw (m²)?"
+            label="Wat is het bruto vloeroppervlak (BVO) van het hele gebouw (m²)?"
             content={
               <div>
-                U kunt het gebruiksoppervlak van alle woningen vinden op{" "}
+                U vindt het gebruiksoppervlak van alle woningen op{" "}
                 <Link
                   href="https://bagviewer.kadaster.nl/"
                   rel="external noopener"
@@ -38,6 +38,8 @@ export function TechnicalFormBuilding() {
                 >
                   bagviewer.kadaster.nl
                 </Link>
+                . Vermenigvuldig dit met een factor van 1,2 om hier BVO van te
+                maken.
               </div>
             }
           />
@@ -63,8 +65,8 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Mechanische ventilatie aanwezig?"
-            content="Dit is een systeem dat automatisch binnenlucht afvoert uit ruimtes zoals de keuken, badkamer en het toilet. Verse lucht komt meestal binnen via roosters of ramen, maar kan ook via de mechanische ventilatie worden aangevoerd."
+            label="Is er mechanische ventilatie?"
+            content="Dit is een systeem dat automatisch binnenlucht afvoert uit ruimtes zoals de keuken, badkamer en het toilet. Verse lucht komt binnen via roosters of ramen, of via de mechanische ventilatie."
           />
           <SelectControl<FormValues>
             name="mechanischeVentilatieAanwezig"
@@ -75,8 +77,11 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
+          <AdsLabelWithTooltip
+            label="Is er vloerverwarming?"
+            content='Klik op "Ja" als meer dan 50% van het gebouw vloerverwarming heeft.'
+          />
           <SelectControl<FormValues>
-            label="Vloerverwarming aanwezig?"
             name="vloerverwarmingAanwezig"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
@@ -86,8 +91,8 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Heeft u dubbel glas?"
-            content={`Klik op "Ja" als meer dan 80% van het gebouw dubbel glas of beter heeft.`}
+            label="Heeft het gebouw dubbel glas?"
+            content='Klik op "Ja" als meer dan 80% van het gebouw dubbel glas of beter heeft, bijvoorbeeld HR++ glas. Controleer dit met de randen tussen de glasplaten. Zit hier een metalen of zwarte strip, dan is het dubbel glas of isolatieglas, vul in dit geval “Ja” in. Zit dit er niet en zit er één dunne glasplaat in het kozijn? Dan gaat het om enkel glas en vul dan "Nee" in.'
           />
           <SelectControl<FormValues>
             name="dubbelGlas"
@@ -98,8 +103,11 @@ export function TechnicalFormBuilding() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
+          <AdsLabelWithTooltip
+            label="Hoeveel m² ruimte is er in elke woning voor installaties?"
+            content="Bijvoorbeeld voor een warmtepomp. Deze past soms op de plek van de huidige cv-ketel."
+          />
           <TextInputControl<FormValues>
-            label="Hoeveel m² ruimte is er in de woningen beschikbaar voor installaties (per woning)?"
             name="beschikbareRuimteInWoningM2"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -110,8 +118,8 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Hoeveel m² ruimte is er in het gebouw beschikbaar voor gedeelde installaties?"
-            content="Het gaat om collectieve technische ruimtes op de begane grond."
+            label="Hoeveel m² ruimte is er in het gebouw voor gedeelde installaties?"
+            content="Het gaat om collectieve technische ruimtes voor bijvoorbeeld een collectieve warmtewisselaar."
           />
           <TextInputControl<FormValues>
             name="beschikbareCollectieveRuimteBinnenM2"
@@ -124,8 +132,8 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Hoeveel m² ruimte is er in de tuin beschikbaar voor gedeelde installaties?"
-            content="Het gaat om ruimte in de tuin voor gedeelde installaties. De oppervlakte moet aaneengesloten zijn."
+            label="Hoeveel m² tuinoppervlak is er in totaal?"
+            content="Het gaat om de beschikbare ruimte voor bijvoorbeeld het boren van bodemlussen."
           />
           <TextInputControl<FormValues>
             name="beschikbareCollectieveRuimteTuinM2"
@@ -152,7 +160,7 @@ export function TechnicalFormBuilding() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Is er een WTW-installatie aanwezig?"
+            label="Is er een warmte-terugwin-installatie (WTW)?"
             content="Dit is een systeem dat warmte uit afgevoerde lucht hergebruikt om binnenkomende lucht voor te verwarmen. Hierdoor gaat minder warmte verloren en wordt energie bespaard."
           />
           <SelectControl<FormValues>
