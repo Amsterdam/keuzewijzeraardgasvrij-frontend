@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Grid, Heading, Paragraph, Row } from "@amsterdam/design-system-react";
+import {
+  Column,
+  Grid,
+  Heading,
+  Paragraph,
+  Row,
+} from "@amsterdam/design-system-react";
 
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import { StatusLegend } from "@/components";
@@ -13,7 +19,7 @@ type Props = {
 };
 
 export default function ResultsView({ results }: Props) {
-  const orderedResults = [...(results ?? []), ...staticResults];
+  const orderedResults = results ?? [];
   const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
     useState(false);
   const shouldShowIsolatiePopup = Boolean(
@@ -55,6 +61,25 @@ export default function ResultsView({ results }: Props) {
           {orderedResults.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />
           ))}
+          <Column
+            gap="x-small"
+            style={{
+              border: " 1px solid var(--ams-color-text)",
+              padding: "var(--ams-space-m)",
+            }}
+          >
+            <Heading level={2}>Nooit mogelijk</Heading>
+            <Paragraph className="ams-mb-m">
+              Onderstaande warmtesystemen zijn nooit mogelijk. Ze zijn niet
+              geschikt als individuele verwarmingsoplossing voor gebouwen of
+              voldoen niet aan de uitgangspunten voor duurzame
+              warmtevoorziening. Daarom worden ze altijd uitgesloten van het
+              advies.
+            </Paragraph>
+            {staticResults.map((result, index) => (
+              <ResultsCard key={index} index={index} result={result} />
+            ))}
+          </Column>
         </Grid.Cell>
       </Grid>
     </>
