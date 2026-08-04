@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Grid, Heading, Paragraph, Row } from "@amsterdam/design-system-react";
+import {
+  ActionGroup,
+  Button,
+  Grid,
+  Heading,
+  Paragraph,
+  Row,
+} from "@amsterdam/design-system-react";
+import { DownloadIcon } from "@amsterdam/design-system-react-icons";
 
 import { DEFAULT_CONTENT_SPAN } from "@/constants";
 import { StatusLegend } from "@/components";
@@ -7,15 +15,18 @@ import IsolatieDialog from "./IsolatieDialog/IsolatieDialog";
 import ResultsCard from "./ResultsCard/ResultsCard";
 import { staticResults } from "./results.static";
 import type { CalculationResult } from "@/types/CalculationResult";
+import type { FormValues } from "@/features/TechnicalDetails/TechnicalForm/technicalFormSchema";
 
 type Props = {
   results?: CalculationResult[];
+  formValues?: Partial<FormValues>;
 };
 
-export default function ResultsView({ results }: Props) {
+export default function ResultsView({ results, formValues }: Props) {
   const orderedResults = [...(results ?? []), ...staticResults];
   const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
     useState(false);
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
   const shouldShowIsolatiePopup = Boolean(
     results?.some((result) => result.isolatie_popup),
   );
@@ -26,6 +37,18 @@ export default function ResultsView({ results }: Props) {
 
   const dismissIsolatieDialog = () => {
     setIsIsolatiePopupDismissed(true);
+  };
+
+  const handleDownloadPdf = async () => {
+    setIsDownloadingPdf(true);
+    try {
+      const { downloadResultsPdf } = await import("./pdf/downloadResultsPdf");
+      await downloadResultsPdf(orderedResults, formValues);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    } finally {
+      setIsDownloadingPdf(false);
+    }
   };
 
   return (
@@ -47,11 +70,25 @@ export default function ResultsView({ results }: Props) {
             beoordeeld (oranje) en niet mogelijk (rood). In sommige situaties
             zijn de best beoordeelde warmtesystemen niet mogelijk.
           </Paragraph>
-          <Row wrap gap="x-large" className="ams-mb-xl">
-            <StatusLegend label="Best beoordeeld" type="success" />
-            <StatusLegend label="Gemiddeld beoordeeld" type="warning" />
-            <StatusLegend label="Niet mogelijk" type="error" />
+          <Row align="between" wrap gap="x-large" className="ams-mb-xl">
+            <Row wrap gap="x-large">
+              <StatusLegend label="Best beoordeeld" type="success" />
+              <StatusLegend label="Gemiddeld beoordeeld" type="warning" />
+              <StatusLegend label="Niet mogelijk" type="error" />
+            </Row>
+            <ActionGroup>
+              <Button
+                variant="secondary"
+                icon={<DownloadIcon />}
+                iconBefore
+                disabled={isDownloadingPdf}
+                onClick={handleDownloadPdf}
+              >
+                {isDownloadingPdf ? "PDF wordt gemaakt..." : "Download als pdf"}
+              </Button>
+            </ActionGroup>
           </Row>
+
           {orderedResults.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />
           ))}

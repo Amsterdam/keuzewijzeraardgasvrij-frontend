@@ -18,10 +18,17 @@ import type { CalculationResult } from "@/types/CalculationResult";
 
 type Props = {
   mutation: UseMutationResult<CalculationResult[], Error, FormValues>;
+  /** Values the user already filled in and submitted this session (e.g. navigated back to this step). Always wins. */
   savedValues?: Partial<FormValues>;
+  /** Values fetched from the prefill API for the selected address. Only used if there are no savedValues. */
+  prefillValues?: Partial<FormValues>;
 };
 
-export default function TechnicalForm({ mutation, savedValues }: Props) {
+export default function TechnicalForm({
+  mutation,
+  savedValues,
+  prefillValues,
+}: Props) {
   const searchParams = new URLSearchParams(window.location.search);
 
   const shouldUseDummyData = searchParams.get("dummy") === "true";
@@ -30,8 +37,14 @@ export default function TechnicalForm({ mutation, savedValues }: Props) {
     if (savedValues && Object.keys(savedValues).length > 0) {
       return savedValues as DefaultValues<FormValues>;
     }
-    return shouldUseDummyData ? generateDummyData() : defaultFormValues();
-  }, [shouldUseDummyData, savedValues]);
+    if (shouldUseDummyData) {
+      return generateDummyData();
+    }
+    if (prefillValues && Object.keys(prefillValues).length > 0) {
+      return prefillValues as DefaultValues<FormValues>;
+    }
+    return defaultFormValues();
+  }, [shouldUseDummyData, savedValues, prefillValues]);
 
   const form = useForm<FormValues>({
     mode: "onSubmit",

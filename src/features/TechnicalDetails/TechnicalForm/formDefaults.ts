@@ -21,7 +21,7 @@ export function generateDummyData(): FormValues {
     tapwaterOpGas: Math.random() > 0.5 ? "true" : "false",
     kokenOpGas: Math.random() > 0.5 ? "true" : "false",
     gasverbruikVveTotaal: gasverbruikVveTotaal,
-    wensTotKoelen: Math.random() > 0.5 ? "true" : "false",
+    wensTotKoelen: "false",
     huidigSysteem: Math.random() > 0.5 ? "collectief" : "individueel",
     dubbelGlas: Math.random() > 0.5 ? "true" : "false",
     beschikbareRuimteInWoningM2: Math.floor(Math.random() * 11),
