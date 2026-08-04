@@ -18,8 +18,7 @@ type Props = {
   results?: CalculationResult[];
 };
 
-export default function ResultsView({ results }: Props) {
-  const orderedResults = results ?? [];
+export default function ResultsView({ results = [] }: Props) {
   const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
     useState(false);
   const shouldShowIsolatiePopup = Boolean(
@@ -58,7 +57,7 @@ export default function ResultsView({ results }: Props) {
             <StatusLegend label="Gemiddeld beoordeeld" type="warning" />
             <StatusLegend label="Niet mogelijk" type="error" />
           </Row>
-          {orderedResults.map((result, index) => (
+          {results.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />
           ))}
           <Column
