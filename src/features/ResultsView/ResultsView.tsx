@@ -69,11 +69,10 @@ export default function ResultsView({ results = [] }: Props) {
           >
             <Heading level={2}>Nooit mogelijk</Heading>
             <Paragraph className="ams-mb-m">
-              Onderstaande warmtesystemen zijn nooit mogelijk. Ze zijn niet
-              geschikt als individuele verwarmingsoplossing voor gebouwen of
-              voldoen niet aan de uitgangspunten voor duurzame
-              warmtevoorziening. Daarom worden ze altijd uitgesloten van het
-              advies.
+              Deze warmtesystemen zijn nooit mogelijk. Ze zijn niet geschikt als
+              individuele verwarmingsoplossing voor gebouwen of voldoen niet aan
+              de uitgangspunten voor duurzame warmtevoorziening. Daarom worden
+              ze altijd uitgesloten van het advies.
             </Paragraph>
             {staticResults.map((result, index) => (
               <ResultsCard key={index} index={index} result={result} />
