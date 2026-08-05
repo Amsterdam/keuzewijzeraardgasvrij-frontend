@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ActionGroup,
   Button,
+  Column,
   Grid,
   Heading,
   Paragraph,
@@ -22,8 +23,8 @@ type Props = {
   formValues?: Partial<FormValues>;
 };
 
-export default function ResultsView({ results, formValues }: Props) {
-  const orderedResults = [...(results ?? []), ...staticResults];
+export default function ResultsView({ results = [], formValues }: Props) {
+  const orderedResults = [...results, ...staticResults];
   const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
     useState(false);
   const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
@@ -89,9 +90,27 @@ export default function ResultsView({ results, formValues }: Props) {
             </ActionGroup>
           </Row>
 
-          {orderedResults.map((result, index) => (
+          {results.map((result, index) => (
             <ResultsCard key={index} index={index} result={result} />
           ))}
+          <Column
+            gap="x-small"
+            style={{
+              border: " 1px solid var(--ams-color-text)",
+              padding: "var(--ams-space-m)",
+            }}
+          >
+            <Heading level={2}>Nooit mogelijk</Heading>
+            <Paragraph className="ams-mb-m">
+              Deze warmtesystemen zijn nooit mogelijk. Ze zijn niet geschikt als
+              individuele verwarmingsoplossing voor gebouwen of voldoen niet aan
+              de uitgangspunten voor duurzame warmtevoorziening. Daarom worden
+              ze altijd uitgesloten van het advies.
+            </Paragraph>
+            {staticResults.map((result, index) => (
+              <ResultsCard key={index} index={index} result={result} />
+            ))}
+          </Column>
         </Grid.Cell>
       </Grid>
     </>
