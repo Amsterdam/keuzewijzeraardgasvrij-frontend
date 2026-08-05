@@ -62,7 +62,7 @@ export default function Wizard() {
       )}
       {currentStep === 3 && (
         <Grid.Cell span="all">
-          <ResultsView results={results} />
+          <ResultsView results={results} formValues={technicalFormValues} />
         </Grid.Cell>
       )}
     </Grid>

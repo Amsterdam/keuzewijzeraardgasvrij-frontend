@@ -50,7 +50,7 @@ export default function TechnicalDetails({
         }),
       ),
     onSuccess: (results, variables) => {
-      onNext(results, variables);
+      onNext(results, { ...variables, buurtcode: address?.buurtcode });
     },
     onError: (error) => {
       console.error("Error submitting form:", error);
@@ -73,7 +73,8 @@ export default function TechnicalDetails({
       </Grid>
       <TechnicalForm
         mutation={mutation}
-        savedValues={savedValues ?? prefillQuery.data}
+        savedValues={savedValues}
+        prefillValues={prefillQuery.data}
       />
     </>
   );
