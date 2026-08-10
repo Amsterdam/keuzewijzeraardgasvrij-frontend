@@ -85,7 +85,7 @@ function createStyles(fontFamily: string) {
       borderColor: "#d9d9d9",
       borderRadius: 2,
       padding: 12,
-      marginBottom: 10,
+      marginBottom: 12,
     },
     cardHeaderRow: {
       flexDirection: "row",
@@ -103,7 +103,7 @@ function createStyles(fontFamily: string) {
     },
     paragraph: {
       marginBottom: 5,
-      lineHeight: 1.1,
+      lineHeight: 1.05,
     },
     detailHeading: {
       ...bold,
@@ -112,7 +112,7 @@ function createStyles(fontFamily: string) {
     },
     listItem: {
       flexDirection: "row",
-      marginBottom: 10,
+      marginBottom: 8,
       marginLeft: 12,
     },
     listItemBullet: {
@@ -169,9 +169,11 @@ function FormFieldsSection({
 function ResultCard({
   result,
   styles,
+  breakBefore,
 }: {
   result: CalculationResult;
   styles: Styles;
+  breakBefore: boolean;
 }) {
   const statusType = getStatusType(result.is_mogelijk, result.score);
   const isDynamicResult = (result.score ?? 0) > 0;
@@ -186,8 +188,8 @@ function ResultCard({
         : null;
 
   return (
-    <View style={styles.card} wrap={false}>
-      <View style={styles.cardHeaderRow}>
+    <View style={styles.card} wrap break={breakBefore}>
+      <View style={styles.cardHeaderRow} wrap={false}>
         <View
           style={[
             styles.statusBullet,
@@ -304,6 +306,7 @@ export function ResultsPdfDocument({
             key={`${result.naam}-${index}`}
             result={result}
             styles={styles}
+            breakBefore={index > 0 && (result.score ?? 0) > 0}
           />
         ))}
 
