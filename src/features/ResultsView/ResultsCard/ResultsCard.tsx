@@ -108,12 +108,12 @@ export function ResultsCard({ result, index }: Props) {
               </div>
             )}
 
-            {result.warmteprogramma_tekst && (
+            {/* {result.warmteprogramma_tekst && (
               <div className="ams-mb-l">
                 <Heading level={4}>Transitievisie warmte</Heading>
                 <Paragraph>{result.warmteprogramma_tekst}</Paragraph>
               </div>
-            )}
+            )} */}
 
             {showCosts && (
               <div className="ams-mb-l">

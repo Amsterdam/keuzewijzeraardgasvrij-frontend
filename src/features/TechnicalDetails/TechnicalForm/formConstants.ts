@@ -12,6 +12,11 @@ export const DEFAULT_OPTIONS_BOOLEAN = [
   { value: "false", label: "Nee" },
 ];
 
+export const DEFAULT_OPTIONS_BOOLEAN_UNKNOWN = [
+  ...DEFAULT_OPTIONS_BOOLEAN,
+  { value: "false", label: "Weet ik niet" },
+];
+
 export const SYSTEM_TYPES = [
   { value: "", label: "Maak een keuze" },
   { value: "collectief", label: "Collectief" },

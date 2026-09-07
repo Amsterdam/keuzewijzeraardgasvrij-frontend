@@ -11,7 +11,7 @@ export function LoadingAdvice() {
       </Row>
 
       <Paragraph>
-        Op basis van jouw antwoorden genereren wij nu een reeks aan adviezen.
+        Op basis van uw antwoorden genereren wij nu een reeks aan adviezen.
       </Paragraph>
     </div>
   );

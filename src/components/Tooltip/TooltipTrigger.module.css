@@ -48,6 +48,7 @@
   pointer-events: auto;
   background-color: var(--ams-color-background) !important;
   opacity: 0.95 !important;
+  z-index: 100 !important;
 }
 
 .tooltipArrow {
