@@ -209,14 +209,14 @@ function ResultCard({
             <Text style={styles.paragraph}>{result.omgevingsvergunning}</Text>
           )}
 
-          {result.warmteprogramma_tekst && (
+          {/* {result.warmteprogramma_tekst && (
             <>
               <Text style={styles.detailHeading}>Transitievisie warmte</Text>
               <Text style={styles.paragraph}>
                 {result.warmteprogramma_tekst}
               </Text>
             </>
-          )}
+          )} */}
 
           {showCosts && (
             <>
