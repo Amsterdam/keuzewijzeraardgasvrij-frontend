@@ -29,8 +29,11 @@ export function TechnicalFormEnergy() {
           />
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
-          <SelectControl<FormValues>
+          <AdsLabelWithTooltip
             label="Wordt er in het gebouw gekookt met gas?"
+            content='Klik op "Ja" als meer dan 50% van het gebouw kookt met gas.'
+          />
+          <SelectControl<FormValues>
             name="kokenOpGas"
             options={DEFAULT_OPTIONS_BOOLEAN}
             registerOptions={{ required: true }}
@@ -84,7 +87,7 @@ export function TechnicalFormEnergy() {
         </Grid.Cell>
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
-            label="Wat is uw huidige systeem?"
+            label="Hoe wordt het gebouw nu verwarmd?"
             content={
               <div>
                 <strong>Individueel warmtesysteem</strong>
