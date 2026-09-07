@@ -1,6 +1,9 @@
 import { Heading, Grid } from "@amsterdam/design-system-react";
 import { SelectControl, TextInputControl } from "@amsterdam/ee-ads-rhf";
-import { DEFAULT_SPAN, DEFAULT_OPTIONS_BOOLEAN } from "../formConstants";
+import {
+  DEFAULT_SPAN,
+  DEFAULT_OPTIONS_BOOLEAN_UNKNOWN,
+} from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
 
 export function TechnicalFormWishes() {
@@ -28,7 +31,7 @@ export function TechnicalFormWishes() {
           <SelectControl<FormValues>
             label="Moet het nieuwe warmtesysteem ook kunnen koelen?"
             name="wensTotKoelen"
-            options={DEFAULT_OPTIONS_BOOLEAN}
+            options={DEFAULT_OPTIONS_BOOLEAN_UNKNOWN}
             registerOptions={{ required: true }}
             style={{ width: "100%" }}
             hideErrorMessage

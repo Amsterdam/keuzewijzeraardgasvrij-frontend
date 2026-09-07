@@ -48,12 +48,14 @@ export const FORM_FIELD_SECTIONS: FieldSection[] = [
           "Beschikbare ruimte in het gebouw voor gedeelde installaties (m²)",
       },
       {
-        key: "beschikbareCollectieveRuimteTuinM2",
-        label: "Beschikbaar tuinoppervlak (m²)",
+        key: "beschikbareCollectieveRuimteDakM2",
+        label:
+          "Beschikbare ruimte buiten het gebouw voor gedeelde installaties (m²)",
       },
       {
-        key: "beschikbareCollectieveRuimteDakM2",
-        label: "Beschikbare ruimte op het dak voor gedeelde installaties (m²)",
+        key: "beschikbareCollectieveRuimteTuinM2",
+        label:
+          "Beschikbare grond buiten het gebouw om bodemlussen te boren (m²)",
       },
       {
         key: "wtwAanwezig",
@@ -81,7 +83,7 @@ export const FORM_FIELD_SECTIONS: FieldSection[] = [
       },
       {
         key: "huidigSysteem",
-        label: "Wat is het huidige systeem?",
+        label: "Hoe wordt het gebouw nu verwarmd?",
         format: "huidigSysteem",
       },
     ],

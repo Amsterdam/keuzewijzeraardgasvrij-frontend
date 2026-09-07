@@ -65,9 +65,10 @@ export default function TechnicalDetails({
       <Grid className="no-padding-inline">
         <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
           <Paragraph className="ams-mb-m">
-            Op basis van <strong>{address?.weergavenaam}</strong> hebben wij uw
-            gegevens ingevuld. Controleer deze gegevens en vul ze aan waar
-            nodig.
+            Op basis van <strong>{address?.weergavenaam}</strong> hebben wij
+            alvast een aantal gebouwgegevens voor u ingevuld. Controleer deze
+            gegevens en pas ze aan waar nodig. Klik op [i] bij de vraag voor
+            meer uitleg.
           </Paragraph>
         </Grid.Cell>
       </Grid>

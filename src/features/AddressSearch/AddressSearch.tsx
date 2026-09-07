@@ -5,10 +5,11 @@ import {
   Label,
   LinkList,
   Alert,
+  Row,
 } from "@amsterdam/design-system-react";
 
 import { usePdokAddressSearch } from "@/api/pdok/pdokHooks";
-import { QueryParamLink } from "@/components";
+import { QueryParamLink, TooltipTrigger } from "@/components";
 
 type Props = {
   onSelectAddress: (address: BAGPdokAddress) => void;
@@ -22,9 +23,15 @@ function AddressSearch({ onSelectAddress }: Props) {
 
   return (
     <>
-      <Label htmlFor="search-box" className="ams-mb-s">
-        Zoek uw adres
-      </Label>
+      <Row gap="small">
+        <Label htmlFor="search-box" className="ams-mb-s">
+          Vul uw eigen adres in
+        </Label>
+        <TooltipTrigger
+          label="uw adres"
+          content="We gebruiken dit om te bepalen bij welk VvE-gebouw u hoort."
+        />
+      </Row>
       <SearchField className="ams-mb-m" onSubmit={(e) => e.preventDefault()}>
         <SearchField.Input
           value={query}
