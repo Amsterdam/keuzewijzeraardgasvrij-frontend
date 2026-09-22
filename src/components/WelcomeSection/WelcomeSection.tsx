@@ -38,9 +38,10 @@ export function WelcomeSection() {
       </Grid.Cell>
       <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
         <Paragraph>
-          <strong>Let op:</strong> de keuzewijzer gaat er vanuit dat uw gebouw
-          goed geïsoleerd is. Dit zijn vaak gebouwen die na 2000 gebouwd of
-          recent geïsoleerd zijn.
+          <strong>Let op:</strong> de keuzewijzer gaat ervan uit dat uw gebouw
+          energielabel B of beter heeft. Is uw gebouw slechter geïsoleerd? Dan
+          zijn de uitkomsten van de keuzewijzer minder betrouwbaar. Sommige
+          technieken werken namelijk pas goed bij voldoende isolatie.
         </Paragraph>
       </Grid.Cell>
     </Grid>
