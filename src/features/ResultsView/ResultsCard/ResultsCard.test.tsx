@@ -172,9 +172,9 @@ describe("ResultsCard", () => {
         result={createResult({
           score: 8,
           ruimtevraag: {
-            installatieruimte_in_woning: 12,
-            installatieruimte_in_gebouw: 34,
-            installatieruimte_buiten: 56,
+            installatieruimte_in_woning: 12.5,
+            installatieruimte_in_gebouw: 34.25,
+            installatieruimte_buiten: 56.75,
           },
         })}
         index={0}
@@ -185,13 +185,13 @@ describe("ResultsCard", () => {
       screen.getByRole("heading", { name: "Verwachte ruimtevraag" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Installatieruimte in woning:\s*12 m²/),
+      screen.getByText(/Installatieruimte in woning:\s*12.5 m²/),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Installatieruimte in gebouw:\s*34 m²/),
+      screen.getByText(/Installatieruimte in gebouw:\s*34.25 m²/),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Installatieruimte buiten:\s*56 m²/),
+      screen.getByText(/Installatieruimte buiten:\s*56.75 m²/),
     ).toBeInTheDocument();
   });
 });

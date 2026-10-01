@@ -140,24 +140,15 @@ export function ResultsCard({ result, index }: Props) {
                 <UnorderedList>
                   <UnorderedList.Item>
                     Installatieruimte in woning:{" "}
-                    {roundToWholeNumber(
-                      result.ruimtevraag.installatieruimte_in_woning,
-                    )}{" "}
-                    m²
+                    {result.ruimtevraag.installatieruimte_in_woning} m²
                   </UnorderedList.Item>
                   <UnorderedList.Item>
                     Installatieruimte in gebouw:{" "}
-                    {roundToWholeNumber(
-                      result.ruimtevraag.installatieruimte_in_gebouw,
-                    )}{" "}
-                    m²
+                    {result.ruimtevraag.installatieruimte_in_gebouw} m²
                   </UnorderedList.Item>
                   <UnorderedList.Item>
                     Installatieruimte buiten:{" "}
-                    {roundToWholeNumber(
-                      result.ruimtevraag.installatieruimte_buiten,
-                    )}{" "}
-                    m²
+                    {result.ruimtevraag.installatieruimte_buiten} m²
                   </UnorderedList.Item>
                 </UnorderedList>
               </div>

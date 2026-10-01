@@ -236,24 +236,15 @@ function ResultCard({
               <Text style={styles.detailHeading}>Verwachte ruimtevraag</Text>
               <Text style={styles.paragraph}>
                 Installatieruimte in woning:{" "}
-                {roundToWholeNumber(
-                  result.ruimtevraag.installatieruimte_in_woning,
-                )}{" "}
-                m²
+                {result.ruimtevraag.installatieruimte_in_woning} m²
               </Text>
               <Text style={styles.paragraph}>
                 Installatieruimte in gebouw:{" "}
-                {roundToWholeNumber(
-                  result.ruimtevraag.installatieruimte_in_gebouw,
-                )}{" "}
-                m²
+                {result.ruimtevraag.installatieruimte_in_gebouw} m²
               </Text>
               <Text style={styles.paragraph}>
                 Installatieruimte buiten:{" "}
-                {roundToWholeNumber(
-                  result.ruimtevraag.installatieruimte_buiten,
-                )}{" "}
-                m²
+                {result.ruimtevraag.installatieruimte_buiten} m²
               </Text>
             </>
           )}
