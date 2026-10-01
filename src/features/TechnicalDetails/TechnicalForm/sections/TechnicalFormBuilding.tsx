@@ -49,8 +49,7 @@ export function TechnicalFormBuilding() {
           />
           <TextInputControl<FormValues>
             name="brutoVloeroppervlak"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            pattern="[0-9.,]*"
             registerOptions={{ required: true }}
             hideErrorMessage
             placeholder="Vul in"
@@ -113,8 +112,7 @@ export function TechnicalFormBuilding() {
           />
           <TextInputControl<FormValues>
             name="beschikbareRuimteInWoningM2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            pattern="[0-9.,]*"
             registerOptions={{ required: true }}
             hideErrorMessage
             placeholder="Vul in"
@@ -127,8 +125,7 @@ export function TechnicalFormBuilding() {
           />
           <TextInputControl<FormValues>
             name="beschikbareCollectieveRuimteBinnenM2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            pattern="[0-9.,]*"
             registerOptions={{ required: true }}
             hideErrorMessage
             placeholder="Vul in"
@@ -142,8 +139,7 @@ export function TechnicalFormBuilding() {
           />
           <TextInputControl<FormValues>
             name="beschikbareCollectieveRuimteDakM2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            pattern="[0-9.,]*"
             registerOptions={{ required: true }}
             hideErrorMessage
             placeholder="Vul in"
@@ -156,8 +152,7 @@ export function TechnicalFormBuilding() {
           />
           <TextInputControl<FormValues>
             name="beschikbareCollectieveRuimteTuinM2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            pattern="[0-9.,]*"
             registerOptions={{ required: true }}
             hideErrorMessage
             placeholder="Vul in"
