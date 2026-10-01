@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+const decimalInput = (value: unknown) =>
+  typeof value === "string" ? value.replace(",", ".") : value;
+
 export const technicalFormSchema = z.object({
   bouwjaar: z.coerce
     .number({
@@ -13,14 +16,17 @@ export const technicalFormSchema = z.object({
       error: "Het bouwjaar kan niet in de toekomst liggen.",
     }),
 
-  brutoVloeroppervlak: z.coerce
-    .number({
-      error: (iss) =>
-        iss.input === undefined
-          ? "Bruto vloeroppervlak is verplicht."
-          : "Voer een geldig getal in voor het bruto vloeroppervlak.",
-    })
-    .min(1, { error: "Het bruto vloeroppervlak moet groter dan 0 zijn." }),
+  brutoVloeroppervlak: z.preprocess(
+    decimalInput,
+    z.coerce
+      .number({
+        error: (iss) =>
+          iss.input === undefined
+            ? "Bruto vloeroppervlak is verplicht."
+            : "Voer een geldig getal in voor het bruto vloeroppervlak.",
+      })
+      .gt(0, { error: "Het bruto vloeroppervlak moet groter dan 0 zijn." }),
+  ),
 
   aantalWoningen: z.coerce
     .number({
@@ -66,7 +72,7 @@ export const technicalFormSchema = z.object({
           ? "Het totale gasverbruik van de VvE is verplicht."
           : "Voer een geldig getal in voor het totale gasverbruik van de VvE.",
     })
-    .min(1, {
+    .gt(0, {
       error: "Het totale gasverbruik van de VvE moet groter dan 0 zijn.",
     }),
 
@@ -92,7 +98,7 @@ export const technicalFormSchema = z.object({
   }),
 
   beschikbareRuimteInWoningM2: z.preprocess(
-    (value) => (typeof value === "string" ? value.replace(",", ".") : value),
+    decimalInput,
     z.coerce
       .number({
         error: (iss) =>
@@ -105,40 +111,50 @@ export const technicalFormSchema = z.object({
       }),
   ),
 
-  beschikbareCollectieveRuimteBinnenM2: z.coerce
-    .number({
-      error: (iss) =>
-        iss.input === undefined
-          ? "De beschikbare collectieve ruimte binnen is verplicht."
-          : "Voer een geldig getal in voor de beschikbare collectieve ruimte binnen.",
-    })
-    .min(0, {
-      error: "De beschikbare collectieve ruimte binnen moet 0 of groter zijn.",
-    }),
+  beschikbareCollectieveRuimteBinnenM2: z.preprocess(
+    decimalInput,
+    z.coerce
+      .number({
+        error: (iss) =>
+          iss.input === undefined
+            ? "De beschikbare collectieve ruimte binnen is verplicht."
+            : "Voer een geldig getal in voor de beschikbare collectieve ruimte binnen.",
+      })
+      .min(0, {
+        error:
+          "De beschikbare collectieve ruimte binnen moet 0 of groter zijn.",
+      }),
+  ),
 
-  beschikbareCollectieveRuimteTuinM2: z.coerce
-    .number({
-      error: (iss) =>
-        iss.input === undefined
-          ? "De beschikbare collectieve ruimte in de tuin is verplicht."
-          : "Voer een geldig getal in voor de beschikbare collectieve ruimte in de tuin.",
-    })
-    .min(0, {
-      error:
-        "De beschikbare collectieve ruimte in de tuin moet 0 of groter zijn.",
-    }),
+  beschikbareCollectieveRuimteTuinM2: z.preprocess(
+    decimalInput,
+    z.coerce
+      .number({
+        error: (iss) =>
+          iss.input === undefined
+            ? "De beschikbare collectieve ruimte in de tuin is verplicht."
+            : "Voer een geldig getal in voor de beschikbare collectieve ruimte in de tuin.",
+      })
+      .min(0, {
+        error:
+          "De beschikbare collectieve ruimte in de tuin moet 0 of groter zijn.",
+      }),
+  ),
 
-  beschikbareCollectieveRuimteDakM2: z.coerce
-    .number({
-      error: (iss) =>
-        iss.input === undefined
-          ? "De beschikbare collectieve ruimte op het dak is verplicht."
-          : "Voer een geldig getal in voor de beschikbare collectieve ruimte op het dak.",
-    })
-    .min(0, {
-      error:
-        "De beschikbare collectieve ruimte op het dak moet 0 of groter zijn.",
-    }),
+  beschikbareCollectieveRuimteDakM2: z.preprocess(
+    decimalInput,
+    z.coerce
+      .number({
+        error: (iss) =>
+          iss.input === undefined
+            ? "De beschikbare collectieve ruimte op het dak is verplicht."
+            : "Voer een geldig getal in voor de beschikbare collectieve ruimte op het dak.",
+      })
+      .min(0, {
+        error:
+          "De beschikbare collectieve ruimte op het dak moet 0 of groter zijn.",
+      }),
+  ),
 
   jaarVervangen: z.coerce
     .number({
