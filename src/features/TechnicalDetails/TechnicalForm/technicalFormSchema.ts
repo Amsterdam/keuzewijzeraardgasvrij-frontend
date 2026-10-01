@@ -91,16 +91,19 @@ export const technicalFormSchema = z.object({
         : "Ongeldige waarde voor dubbel glas.",
   }),
 
-  beschikbareRuimteInWoningM2: z.coerce
-    .number({
-      error: (iss) =>
-        iss.input === undefined
-          ? "De beschikbare ruimte in de woning is verplicht."
-          : "Voer een geldig getal in voor de beschikbare ruimte in de woning.",
-    })
-    .min(0, {
-      error: "De beschikbare ruimte in de woning moet 0 of groter zijn.",
-    }),
+  beschikbareRuimteInWoningM2: z.preprocess(
+    (value) => (typeof value === "string" ? value.replace(",", ".") : value),
+    z.coerce
+      .number({
+        error: (iss) =>
+          iss.input === undefined
+            ? "De beschikbare ruimte in de woning is verplicht."
+            : "Voer een geldig getal in voor de beschikbare ruimte in de woning.",
+      })
+      .min(0, {
+        error: "De beschikbare ruimte in de woning moet 0 of groter zijn.",
+      }),
+  ),
 
   beschikbareCollectieveRuimteBinnenM2: z.coerce
     .number({

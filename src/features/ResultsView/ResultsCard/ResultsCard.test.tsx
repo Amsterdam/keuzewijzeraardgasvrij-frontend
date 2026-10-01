@@ -165,4 +165,33 @@ describe("ResultsCard", () => {
 
     expect(screen.getByText("Lage energiekosten")).toBeInTheDocument();
   });
+
+  it("shows the ruimtevraag section when present", () => {
+    render(
+      <ResultsCard
+        result={createResult({
+          score: 8,
+          ruimtevraag: {
+            installatieruimte_in_woning: 12,
+            installatieruimte_in_gebouw: 34,
+            installatieruimte_buiten: 56,
+          },
+        })}
+        index={0}
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", { name: "Verwachte ruimtevraag" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Installatieruimte in woning:\s*12 m²/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Installatieruimte in gebouw:\s*34 m²/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Installatieruimte buiten:\s*56 m²/),
+    ).toBeInTheDocument();
+  });
 });

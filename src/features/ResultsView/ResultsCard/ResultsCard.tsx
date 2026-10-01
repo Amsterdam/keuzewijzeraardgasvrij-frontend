@@ -134,6 +134,35 @@ export function ResultsCard({ result, index }: Props) {
               </div>
             )}
 
+            {result.ruimtevraag && (
+              <div className="ams-mb-l">
+                <Heading level={4}>Verwachte ruimtevraag</Heading>
+                <UnorderedList>
+                  <UnorderedList.Item>
+                    Installatieruimte in woning:{" "}
+                    {roundToWholeNumber(
+                      result.ruimtevraag.installatieruimte_in_woning,
+                    )}{" "}
+                    m²
+                  </UnorderedList.Item>
+                  <UnorderedList.Item>
+                    Installatieruimte in gebouw:{" "}
+                    {roundToWholeNumber(
+                      result.ruimtevraag.installatieruimte_in_gebouw,
+                    )}{" "}
+                    m²
+                  </UnorderedList.Item>
+                  <UnorderedList.Item>
+                    Installatieruimte buiten:{" "}
+                    {roundToWholeNumber(
+                      result.ruimtevraag.installatieruimte_buiten,
+                    )}{" "}
+                    m²
+                  </UnorderedList.Item>
+                </UnorderedList>
+              </div>
+            )}
+
             {result.beschrijving_url && (
               <div className="ams-mb-l">
                 <Heading level={4}>Meer informatie en vervolgstappen</Heading>
