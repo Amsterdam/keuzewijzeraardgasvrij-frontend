@@ -25,7 +25,7 @@ type Props = {
 };
 
 const TOOLTIP_KOSTENINDICATIE =
-  "Deze kosten zijn een schatting per woning per jaar. Hierin zitten energiekosten, aanschafkosten, installatiekosten en onderhoudskosten. Inflatie is hierbij niet meegenomen. Dit is een schatting om systemen te vergelijken.";
+  "Deze kosten zijn een schatting per woning per jaar. Hierin zitten energiekosten, aanschafkosten, installatiekosten en onderhoudskosten. Inflatie en aanpassingen aan het gebouw zijn hierbij niet meegenomen. Dit is een schatting om systemen te vergelijken.";
 
 export function ResultsCard({ result, index }: Props) {
   const [isOpen, setIsOpen] = useState(index === 0);
@@ -46,6 +46,7 @@ export function ResultsCard({ result, index }: Props) {
   const isDynamicResult = (result.score ?? 0) > 0;
 
   const showCosts =
+    result.is_mogelijk &&
     result.kosten_per_woning_per_jaar_laag > 0 &&
     result.kosten_per_woning_per_jaar_hoog > 0;
 
@@ -95,11 +96,7 @@ export function ResultsCard({ result, index }: Props) {
         >
           <div className={styles.detailsInner}>
             {tuinTekst && (
-              <Paragraph
-                className={result.omgevingsvergunning ? "ams-mb-m" : undefined}
-              >
-                {tuinTekst}
-              </Paragraph>
+              <Paragraph className="ams-mb-m">{tuinTekst}</Paragraph>
             )}
 
             {result.omgevingsvergunning && (
