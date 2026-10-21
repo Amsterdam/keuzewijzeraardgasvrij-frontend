@@ -1,6 +1,6 @@
 import type { CalculationResult } from "@/types/CalculationResult";
 
-const GOOD_SCORE_THRESHOLD = 7.5;
+const GOOD_SCORE_THRESHOLD = 6;
 
 export function getStatusType(
   is_mogelijk: CalculationResult["is_mogelijk"],
@@ -10,7 +10,7 @@ export function getStatusType(
 
   if (!is_mogelijk) {
     return "error";
-  } else if (safeScore > GOOD_SCORE_THRESHOLD) {
+  } else if (safeScore >= GOOD_SCORE_THRESHOLD) {
     return "success";
   } else {
     return "warning";

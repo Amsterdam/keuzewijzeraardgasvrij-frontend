@@ -12,7 +12,7 @@ describe("getStatusType", () => {
   });
 
   it("returns warning when mogelijk and score is at or below the threshold", () => {
-    expect(getStatusType(true, 7.5)).toBe("warning");
+    expect(getStatusType(true, 5.5)).toBe("warning");
     expect(getStatusType(true, 0)).toBe("warning");
   });
 
