@@ -23,7 +23,7 @@
     "@amsterdam/design-system-react-icons": "^2.2.0",
     "@amsterdam/design-system-tokens": "^4.3.0",
     "@amsterdam/ee-ads-rhf": "^0.0.8",
-    "@hookform/resolvers": "^5.9.1",
+    "@hookform/resolvers": "^6.0.0",
     "@react-pdf/renderer": "^4.9.0",
     "@tanstack/react-query": "^5.102.8",
     "qs": "^6.16.0",
