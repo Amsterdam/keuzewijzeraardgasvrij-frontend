@@ -17,7 +17,7 @@
     "prepare": "node -e \"try{require.resolve('husky')}catch(e){process.exit(0)}\" && husky"
   },
   "dependencies": {
-    "@amsterdam/design-system-assets": "^2.6.0",
+    "@amsterdam/design-system-assets": "^2.7.0",
     "@amsterdam/design-system-css": "^4.4.0",
     "@amsterdam/design-system-react": "^4.4.0",
     "@amsterdam/design-system-react-icons": "^2.2.0",
