@@ -126,7 +126,11 @@ export function ResultsCard({ result, index }: Props) {
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)}{" "}
                   en de €{" "}
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)}{" "}
-                  per woning per jaar.
+                  per woning per jaar. Dit is een schatting om systemen met
+                  elkaar te vergelijken. Hierin zitten energie, aanschaf,
+                  installatie en onderhoud. Inflatie en aanpassingen aan het
+                  gebouw zitten er niet in. Die kosten komen er nog bij en
+                  kunnen hoog zijn.
                 </Paragraph>
               </div>
             )}
