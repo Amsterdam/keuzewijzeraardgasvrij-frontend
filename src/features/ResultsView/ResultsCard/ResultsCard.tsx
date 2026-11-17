@@ -14,29 +14,22 @@ import {
   LinkExternalIcon,
 } from "@amsterdam/design-system-react-icons";
 
-import { StatusLegend, TooltipTrigger } from "@/components";
+import { StatusLegend } from "@/components";
 import type { CalculationResult } from "@/types/CalculationResult";
 import styles from "./ResultsCard.module.css";
 import { getStatusType, roundToWholeNumber } from "./results.helpers";
+import { getTuinTekst, KOSTENINDICATIE_TOELICHTING } from "../results.texts";
 
 type Props = {
   result: CalculationResult;
   index: number;
 };
 
-const TOOLTIP_KOSTENINDICATIE =
-  "Deze kosten zijn een schatting per woning per jaar. Hierin zitten energiekosten, aanschafkosten, installatiekosten en onderhoudskosten. Inflatie en aanpassingen aan het gebouw zijn hierbij niet meegenomen. Dit is een schatting om systemen te vergelijken.";
-
 export function ResultsCard({ result, index }: Props) {
   const [isOpen, setIsOpen] = useState(index === 0);
   const detailsRef = useRef<HTMLDivElement>(null);
   const detailsId = `results-card-details-${index}`;
-  const tuinTekst =
-    result.past_in_tuin === true
-      ? "De bodembron past waarschijnlijk in de tuin."
-      : result.past_in_tuin === false
-        ? "De bodembron past waarschijnlijk niet in de tuin. In sommige gevallen is het mogelijk om de bodembron in de openbare ruimte te plaatsen. Hiervoor kunnen extra kosten en vergunningen nodig zijn. Deze kosten zijn hieronder niet meegerekend."
-        : null;
+  const tuinTekst = getTuinTekst(result);
   const hasTuinOfVergunningTekst = Boolean(
     tuinTekst || result.omgevingsvergunning,
   );
@@ -114,23 +107,13 @@ export function ResultsCard({ result, index }: Props) {
 
             {showCosts && (
               <div className="ams-mb-l">
-                <div className={styles.headingWithTooltip}>
-                  <Heading level={4}>Kostenindicatie</Heading>
-                  <TooltipTrigger
-                    label="Kostenindicatie"
-                    content={TOOLTIP_KOSTENINDICATIE}
-                  />
-                </div>
+                <Heading level={4}>Kostenindicatie</Heading>
                 <Paragraph>
                   Tussen de €{" "}
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)}{" "}
                   en de €{" "}
                   {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)}{" "}
-                  per woning per jaar. Dit is een schatting om systemen met
-                  elkaar te vergelijken. Hierin zitten energie, aanschaf,
-                  installatie en onderhoud. Inflatie en aanpassingen aan het
-                  gebouw zitten er niet in. Die kosten komen er nog bij en
-                  kunnen hoog zijn.
+                  per woning per jaar. {KOSTENINDICATIE_TOELICHTING}
                 </Paragraph>
               </div>
             )}

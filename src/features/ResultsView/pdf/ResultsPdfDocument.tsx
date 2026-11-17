@@ -11,12 +11,32 @@ import type { CalculationResult } from "@/types/CalculationResult";
 import type { FormValues } from "@/features/TechnicalDetails/TechnicalForm/technicalFormSchema";
 import { FORM_FIELD_SECTIONS, formatFieldValue } from "./formFieldLabels";
 import { AMSTERDAM_SANS_FONT_FAMILY, FALLBACK_FONT_FAMILY } from "./pdfFonts";
+import { PdfLogo } from "./PdfLogo";
 import {
   getStatusType,
   roundToWholeNumber,
 } from "../ResultsCard/results.helpers";
+import { staticResults } from "../results.static";
+import {
+  getTuinTekst,
+  KOSTENINDICATIE_TOELICHTING,
+  NOOIT_MOGELIJK_HEADING,
+  NOOIT_MOGELIJK_INTRO,
+  RESULTS_HEADING,
+  RESULTS_INTRO,
+  STATUS_LEGEND_LABELS,
+} from "../results.texts";
+import {
+  WELCOME_INTRO_PARAGRAPHS,
+  WELCOME_LET_OP,
+  WELCOME_UITKOMST_HEADING,
+  WELCOME_UITKOMST_PARAGRAPHS,
+} from "@/components/WelcomeSection/welcomeTexts";
+import { getFieldTooltip } from "@/features/TechnicalDetails/TechnicalForm/fieldTooltips";
+import type { InlineSegment, TooltipContent } from "@/content/tooltipContent";
 
 type Props = {
+  /** Calculated results; the static "nooit mogelijk" results are added by the document itself. */
   results: CalculationResult[];
   formValues: Partial<FormValues> | undefined;
   /** Defaults to Amsterdam Sans; pass FALLBACK_FONT_FAMILY if it failed to load. */
@@ -46,6 +66,9 @@ function createStyles(fontFamily: string) {
       fontFamily,
       color: "#1a1a1a",
     },
+    logo: {
+      marginBottom: 24,
+    },
     title: {
       ...bold,
       fontSize: 18,
@@ -67,11 +90,13 @@ function createStyles(fontFamily: string) {
       marginTop: 10,
       marginBottom: 4,
     },
-    fieldRow: {
-      flexDirection: "row",
-      paddingVertical: 3,
+    field: {
+      paddingVertical: 6,
       borderBottomWidth: 0.5,
       borderBottomColor: "#e0e0e0",
+    },
+    fieldRow: {
+      flexDirection: "row",
     },
     fieldLabel: {
       width: "80%",
@@ -79,6 +104,11 @@ function createStyles(fontFamily: string) {
     fieldValue: {
       ...bold,
       width: "20%",
+    },
+    // Rendered below the label row (not inside it): react-pdf measures text
+    // in nested flex rows unreliably, which made the lines overlap.
+    fieldNote: {
+      paddingRight: 100,
     },
     card: {
       borderWidth: 1,
@@ -102,7 +132,7 @@ function createStyles(fontFamily: string) {
       ...bold,
     },
     paragraph: {
-      marginBottom: 5,
+      marginBottom: 8,
       lineHeight: 1.05,
     },
     detailHeading: {
@@ -125,6 +155,31 @@ function createStyles(fontFamily: string) {
       color: "#005EA2",
       textDecoration: "underline",
     },
+    note: {
+      fontSize: 10,
+      color: "#5a5a5a",
+      marginTop: 2,
+    },
+    noteHeading: {
+      ...bold,
+      fontSize: 10,
+      color: "#5a5a5a",
+      marginTop: 4,
+    },
+    noteListItem: {
+      flexDirection: "row",
+      marginLeft: 8,
+    },
+    legendRow: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      marginBottom: 16,
+    },
+    legendItem: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginRight: 16,
+    },
     footer: {
       position: "absolute",
       bottom: 20,
@@ -139,6 +194,95 @@ function createStyles(fontFamily: string) {
 
 type Styles = ReturnType<typeof createStyles>;
 
+function InlineSegments({
+  segments,
+  styles,
+}: {
+  segments: InlineSegment[];
+  styles: Styles;
+}) {
+  return (
+    <>
+      {segments.map((segment, index) =>
+        typeof segment === "string" ? (
+          segment
+        ) : (
+          <Link key={index} src={segment.href} style={styles.link}>
+            {segment.text}
+          </Link>
+        ),
+      )}
+    </>
+  );
+}
+
+/** PDF counterpart of the website's TooltipBlocks ("info knop" texts). */
+function TooltipNote({
+  content,
+  styles,
+}: {
+  content: TooltipContent;
+  styles: Styles;
+}) {
+  return (
+    <View>
+      {content.map((block, index) => {
+        switch (block.type) {
+          case "heading":
+            return (
+              <Text key={index} style={styles.noteHeading}>
+                {block.text}
+              </Text>
+            );
+          case "paragraph":
+            return (
+              <Text key={index} style={styles.note}>
+                <InlineSegments segments={block.content} styles={styles} />
+              </Text>
+            );
+          case "list":
+            return (
+              <View key={index}>
+                {block.items.map((item, itemIndex) => (
+                  <View key={itemIndex} style={styles.noteListItem}>
+                    <Text style={[styles.note, styles.listItemBullet]}>•</Text>
+                    <Text style={[styles.note, styles.listItemText]}>
+                      <InlineSegments segments={item} styles={styles} />
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            );
+        }
+      })}
+    </View>
+  );
+}
+
+function IntroSection({ styles }: { styles: Styles }) {
+  return (
+    <View>
+      {WELCOME_INTRO_PARAGRAPHS.map((text) => (
+        <Text key={text} style={styles.paragraph}>
+          {text}
+        </Text>
+      ))}
+      <Text style={styles.fieldSectionHeading} minPresenceAhead={40}>
+        {WELCOME_UITKOMST_HEADING}
+      </Text>
+      {WELCOME_UITKOMST_PARAGRAPHS.map((text) => (
+        <Text key={text} style={styles.paragraph}>
+          {text}
+        </Text>
+      ))}
+      <Text style={styles.paragraph}>
+        <Text style={styles.cardTitle}>{WELCOME_LET_OP.label}</Text>{" "}
+        {WELCOME_LET_OP.text}
+      </Text>
+    </View>
+  );
+}
+
 function FormFieldsSection({
   formValues,
   styles,
@@ -147,19 +291,31 @@ function FormFieldsSection({
   styles: Styles;
 }) {
   return (
-    <View>
+    <View break>
       <Text style={styles.sectionHeading}>Ingevoerde gegevens</Text>
       {FORM_FIELD_SECTIONS.map((section) => (
-        <View key={section.title} wrap={false}>
-          <Text style={styles.fieldSectionHeading}>{section.title}</Text>
-          {section.fields.map((field) => (
-            <View key={String(field.key)} style={styles.fieldRow}>
-              <Text style={styles.fieldLabel}>{field.label}</Text>
-              <Text style={styles.fieldValue}>
-                {formatFieldValue(formValues?.[field.key], field.format)}
-              </Text>
-            </View>
-          ))}
+        <View key={section.title}>
+          <Text style={styles.fieldSectionHeading} minPresenceAhead={40}>
+            {section.title}
+          </Text>
+          {section.fields.map((field) => {
+            const tooltip = getFieldTooltip(field.key);
+            return (
+              <View key={String(field.key)} style={styles.field} wrap={false}>
+                <View style={styles.fieldRow}>
+                  <Text style={styles.fieldLabel}>{field.label}</Text>
+                  <Text style={styles.fieldValue}>
+                    {formatFieldValue(formValues?.[field.key], field.format)}
+                  </Text>
+                </View>
+                {tooltip && (
+                  <View style={styles.fieldNote}>
+                    <TooltipNote content={tooltip} styles={styles} />
+                  </View>
+                )}
+              </View>
+            );
+          })}
         </View>
       ))}
     </View>
@@ -180,12 +336,7 @@ function ResultCard({
   const showCosts =
     result.kosten_per_woning_per_jaar_laag > 0 &&
     result.kosten_per_woning_per_jaar_hoog > 0;
-  const tuinTekst =
-    result.past_in_tuin === true
-      ? "De bodembron past waarschijnlijk in de tuin."
-      : result.past_in_tuin === false
-        ? "De bodembron past waarschijnlijk niet in de tuin. In sommige gevallen is het mogelijk om de bodembron in de openbare ruimte te plaatsen. Hiervoor kunnen extra kosten en vergunningen nodig zijn. Deze kosten zijn hieronder niet meegerekend."
-        : null;
+  const tuinTekst = getTuinTekst(result);
 
   return (
     <View style={styles.card} wrap break={breakBefore}>
@@ -226,7 +377,7 @@ function ResultCard({
                 {roundToWholeNumber(result.kosten_per_woning_per_jaar_laag)} en
                 de €{" "}
                 {roundToWholeNumber(result.kosten_per_woning_per_jaar_hoog)} per
-                woning per jaar.
+                woning per jaar. {KOSTENINDICATIE_TOELICHTING}
               </Text>
             </>
           )}
@@ -241,10 +392,6 @@ function ResultCard({
               <Text style={styles.paragraph}>
                 Installatieruimte in gebouw:{" "}
                 {result.ruimtevraag.installatieruimte_in_gebouw} m²
-              </Text>
-              <Text style={styles.paragraph}>
-                Installatieruimte buiten:{" "}
-                {result.ruimtevraag.installatieruimte_buiten} m²
               </Text>
             </>
           )}
@@ -311,22 +458,54 @@ export function ResultsPdfDocument({
   return (
     <Document title="Keuzewijzer Aardgasvrij - Resultaten">
       <Page size="A4" style={styles.page} wrap>
-        <Text style={styles.title}>Adviezen voor warmtesystemen</Text>
+        <View style={styles.logo}>
+          <PdfLogo height={32} />
+        </View>
+        <Text style={styles.title}>{RESULTS_HEADING}</Text>
         <Text style={styles.subtitle}>Gegenereerd op {generatedOn}</Text>
+
+        <IntroSection styles={styles} />
 
         <FormFieldsSection formValues={formValues} styles={styles} />
 
         <Text style={styles.sectionHeading} break>
           Adviezen
         </Text>
+        <Text style={styles.paragraph}>{RESULTS_INTRO}</Text>
+        <View style={styles.legendRow}>
+          {(["success", "warning", "error"] as const).map((type) => (
+            <View key={type} style={styles.legendItem}>
+              <View
+                style={[
+                  styles.statusBullet,
+                  { backgroundColor: STATUS_COLORS[type] },
+                ]}
+              />
+              <Text>{STATUS_LEGEND_LABELS[type]}</Text>
+            </View>
+          ))}
+        </View>
         {results.map((result, index) => (
           <ResultCard
             key={`${result.naam}-${index}`}
             result={result}
             styles={styles}
-            breakBefore={index > 0 && (result.score ?? 0) > 0}
+            breakBefore={index > 0}
           />
         ))}
+
+        <View break>
+          <Text style={styles.sectionHeading}>{NOOIT_MOGELIJK_HEADING}</Text>
+          <Text style={styles.paragraph}>{NOOIT_MOGELIJK_INTRO}</Text>
+          {staticResults.map((result) => (
+            <ResultCard
+              key={result.naam}
+              result={result}
+              styles={styles}
+              breakBefore={false}
+            />
+          ))}
+        </View>
 
         <Text
           style={styles.footer}

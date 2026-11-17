@@ -9,3 +9,4 @@ export * from "./Tooltip/AdsLabelWithTooltip";
 export * from "./Tooltip/TooltipTrigger";
 export * from "./QueryParamLink/QueryParamLink";
 export * from "./WelcomeSection/WelcomeSection";
+export * from "./Tooltip/TooltipBlocks";
