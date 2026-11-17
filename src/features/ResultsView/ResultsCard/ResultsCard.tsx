@@ -143,10 +143,6 @@ export function ResultsCard({ result, index }: Props) {
                     Installatieruimte in gebouw:{" "}
                     {result.ruimtevraag.installatieruimte_in_gebouw} m²
                   </UnorderedList.Item>
-                  <UnorderedList.Item>
-                    Installatieruimte buiten:{" "}
-                    {result.ruimtevraag.installatieruimte_buiten} m²
-                  </UnorderedList.Item>
                 </UnorderedList>
               </div>
             )}
