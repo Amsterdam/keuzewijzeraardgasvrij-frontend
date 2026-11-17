@@ -91,7 +91,7 @@ function createStyles(fontFamily: string) {
       marginBottom: 4,
     },
     field: {
-      paddingVertical: 3,
+      paddingVertical: 6,
       borderBottomWidth: 0.5,
       borderBottomColor: "#e0e0e0",
     },
