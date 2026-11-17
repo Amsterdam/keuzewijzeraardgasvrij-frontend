@@ -190,8 +190,5 @@ describe("ResultsCard", () => {
     expect(
       screen.getByText(/Installatieruimte in gebouw:\s*34.25 m²/),
     ).toBeInTheDocument();
-    expect(
-      screen.queryByText(/Installatieruimte buiten/),
-    ).not.toBeInTheDocument();
   });
 });

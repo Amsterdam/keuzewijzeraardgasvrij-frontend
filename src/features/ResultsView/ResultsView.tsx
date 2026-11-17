@@ -16,6 +16,13 @@ import IsolatieDialog from "./IsolatieDialog/IsolatieDialog";
 import ResultsCard from "./ResultsCard/ResultsCard";
 import { staticResults } from "./results.static";
 import type { CalculationResult } from "@/types/CalculationResult";
+import {
+  NOOIT_MOGELIJK_HEADING,
+  NOOIT_MOGELIJK_INTRO,
+  RESULTS_HEADING,
+  RESULTS_INTRO,
+  STATUS_LEGEND_LABELS,
+} from "./results.texts";
 import type { FormValues } from "@/features/TechnicalDetails/TechnicalForm/technicalFormSchema";
 
 type Props = {
@@ -24,7 +31,6 @@ type Props = {
 };
 
 export default function ResultsView({ results = [], formValues }: Props) {
-  const orderedResults = [...results, ...staticResults];
   const [isIsolatiePopupDismissed, setIsIsolatiePopupDismissed] =
     useState(false);
   const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
@@ -44,7 +50,7 @@ export default function ResultsView({ results = [], formValues }: Props) {
     setIsDownloadingPdf(true);
     try {
       const { downloadResultsPdf } = await import("./pdf/downloadResultsPdf");
-      await downloadResultsPdf(orderedResults, formValues);
+      await downloadResultsPdf(results, formValues);
     } catch (error) {
       console.error("Error generating PDF:", error);
     } finally {
@@ -61,21 +67,20 @@ export default function ResultsView({ results = [], formValues }: Props) {
       <Grid className="no-padding-inline">
         <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
           <Heading level={2} className="ams-mb-m">
-            Adviezen voor warmtesystemen
+            {RESULTS_HEADING}
           </Heading>
-          <Paragraph className="ams-mb-l">
-            Op basis van uw gegevens ziet u hieronder welke warmtesystemen het
-            beste bij uw gebouw passen. Bovenaan wat het beste past, onderaan
-            wat het minst past. Klik met uw muis op een systeem voor meer
-            uitleg. De kleuren betekenen: best beoordeeld (groen), gemiddeld
-            beoordeeld (oranje) en niet mogelijk (rood). In sommige situaties
-            zijn de best beoordeelde warmtesystemen niet mogelijk.
-          </Paragraph>
+          <Paragraph className="ams-mb-l">{RESULTS_INTRO}</Paragraph>
           <Row align="between" wrap gap="x-large" className="ams-mb-xl">
             <Row wrap gap="x-large">
-              <StatusLegend label="Best beoordeeld" type="success" />
-              <StatusLegend label="Gemiddeld beoordeeld" type="warning" />
-              <StatusLegend label="Niet mogelijk" type="error" />
+              <StatusLegend
+                label={STATUS_LEGEND_LABELS.success}
+                type="success"
+              />
+              <StatusLegend
+                label={STATUS_LEGEND_LABELS.warning}
+                type="warning"
+              />
+              <StatusLegend label={STATUS_LEGEND_LABELS.error} type="error" />
             </Row>
             <ActionGroup>
               <Button
@@ -100,13 +105,8 @@ export default function ResultsView({ results = [], formValues }: Props) {
               padding: "var(--ams-space-m)",
             }}
           >
-            <Heading level={2}>Nooit mogelijk</Heading>
-            <Paragraph className="ams-mb-m">
-              Deze warmtesystemen zijn nooit mogelijk. Ze zijn niet geschikt als
-              individuele verwarmingsoplossing voor gebouwen of voldoen niet aan
-              de uitgangspunten voor duurzame warmtevoorziening. Daarom worden
-              ze altijd uitgesloten van het advies.
-            </Paragraph>
+            <Heading level={2}>{NOOIT_MOGELIJK_HEADING}</Heading>
+            <Paragraph className="ams-mb-m">{NOOIT_MOGELIJK_INTRO}</Paragraph>
             {staticResults.map((result, index) => (
               <ResultsCard key={index} index={index} result={result} />
             ))}

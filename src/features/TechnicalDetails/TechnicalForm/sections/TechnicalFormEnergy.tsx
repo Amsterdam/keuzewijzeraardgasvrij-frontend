@@ -1,4 +1,4 @@
-import { Heading, Grid, Link } from "@amsterdam/design-system-react";
+import { Heading, Grid } from "@amsterdam/design-system-react";
 import { TextInputControl, SelectControl } from "@amsterdam/ee-ads-rhf";
 import {
   DEFAULT_SPAN,
@@ -6,7 +6,8 @@ import {
   SYSTEM_TYPES,
 } from "../formConstants";
 import type { FormValues } from "../technicalFormSchema";
-import { AdsLabelWithTooltip } from "@/components";
+import { AdsLabelWithTooltip, TooltipBlocks } from "@/components";
+import { FIELD_TOOLTIPS } from "../fieldTooltips";
 
 export function TechnicalFormEnergy() {
   return (
@@ -31,7 +32,7 @@ export function TechnicalFormEnergy() {
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
             label="Wordt er in het gebouw gekookt met gas?"
-            content='Klik op "Ja" als meer dan 50% van het gebouw kookt met gas.'
+            content={<TooltipBlocks content={FIELD_TOOLTIPS.kokenOpGas} />}
           />
           <SelectControl<FormValues>
             name="kokenOpGas"
@@ -45,34 +46,7 @@ export function TechnicalFormEnergy() {
           <AdsLabelWithTooltip
             label="Totaal gasverbruik van de VvE (m³)"
             content={
-              <div>
-                U kunt dit op meerdere manieren vinden:
-                <br />
-                <ul>
-                  <li>
-                    Op de eindejaarsafrekening van het gebouw (bij een
-                    collectief systeem).
-                  </li>
-                  <li>
-                    U kunt alle eindejaarsafrekeningen van de bewoners optellen
-                    (bij individuele systemen).
-                  </li>
-                  <li>
-                    U kunt het gemiddelde gasverbruik per woning van uw postcode
-                    vermenigvuldigen met het aantal woningen. Zie hiervoor de{" "}
-                    <Link
-                      href="https://www.liander.nl/over-ons/open-data#verbruiksdata-kleinverbruikaansluitingen"
-                      rel="external noopener"
-                      target="_blank"
-                    >
-                      website van Liander
-                    </Link>{" "}
-                    en download het bestand "Kleinverbruikgegevens" van het
-                    vorige jaar. Het gemiddelde gasverbruik per woning staat in
-                    kolom "SJA GEMIDDELD".
-                  </li>
-                </ul>
-              </div>
+              <TooltipBlocks content={FIELD_TOOLTIPS.gasverbruikVveTotaal} />
             }
           />
           <TextInputControl<FormValues>
@@ -88,23 +62,7 @@ export function TechnicalFormEnergy() {
         <Grid.Cell span={DEFAULT_SPAN}>
           <AdsLabelWithTooltip
             label="Hoe wordt het gebouw nu verwarmd?"
-            content={
-              <div>
-                <strong>Individueel warmtesysteem</strong>
-                <div>
-                  Elke woning of ruimte heeft een eigen verwarmingsinstallatie.
-                  Elke bewoner regelt en betaalt de gasrekening zelfstandig bij
-                  de leverancier.
-                </div>
-                <br />
-                <strong>Collectief warmtesysteem</strong>
-                <div>
-                  Meerdere woningen of ruimtes delen één centrale
-                  verwarmingsinstallatie. De warmte wordt centraal opgewekt en
-                  verdeeld binnen het gebouw.
-                </div>
-              </div>
-            }
+            content={<TooltipBlocks content={FIELD_TOOLTIPS.huidigSysteem} />}
           />
           <SelectControl<FormValues>
             name="huidigSysteem"
