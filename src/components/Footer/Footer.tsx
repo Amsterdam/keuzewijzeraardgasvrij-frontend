@@ -27,10 +27,10 @@ export function Footer() {
             <LinkList>
               <LinkList.Link
                 color="inverse"
-                href="https://formulieren.amsterdam.nl/TriplEforms/DirectRegelen/formulier/nl-NL/evAmsterdam/contactformulier.aspx/?pk_vid=812b1a759e11515f1773138914706372"
+                href="mailto:vve.wonen@amsterdam.nl"
                 icon={<MailIcon />}
               >
-                Contactformulier
+                vve.wonen@amsterdam.nl
               </LinkList.Link>
               <LinkList.Link
                 color="inverse"
