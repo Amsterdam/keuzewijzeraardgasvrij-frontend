@@ -4,7 +4,7 @@ import { DEFAULT_CONTENT_SPAN } from "@/constants";
 
 export function WelcomeSection() {
   return (
-    <Grid gapVertical="large" paddingVertical="large">
+    <Grid gapVertical="large" paddingVertical="large" className="ams-mb-m">
       <Grid.Cell span="all">
         <Heading level={1}>
           {`${env.VITE_APP_TITLE} ${env.VITE_ENVIRONMENT_SHORT}`}
@@ -20,13 +20,19 @@ export function WelcomeSection() {
       </Grid.Cell>
       <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
         <Paragraph>
-          U vult in stap één de adresgegevens van uw gebouw in. In stap twee
-          krijgt u een aantal vragen over de VvE, over het energiegebruik en
-          over de wensen van de VvE. Op basis daarvan vergelijkt de tool
-          verschillende technieken met elkaar, zoals warmtepompen, een warmtenet
-          en andere duurzame systemen. Daarna ziet u meteen welke warmtesystemen
-          het beste bij uw gebouw passen en welke minder geschikt lijken.
+          Deze keuzewijzer geeft u een eerste richting voor een aardgasvrije
+          warmteoplossing voor uw VvE-gebouw. In twee stappen krijgt u een
+          indicatie van de best passende technieken voor uw VvE. U vult in stap
+          één de adresgegevens van uw gebouw in. In stap twee krijgt u een
+          aantal vragen over de VvE, over het energiegebruik en over de wensen
+          van de VvE. Op basis daarvan vergelijkt de tool verschillende
+          technieken met elkaar, zoals warmtepompen, een warmtenet en andere
+          duurzame systemen. Daarna ziet u meteen welke warmtesystemen het beste
+          bij uw gebouw passen en welke minder geschikt lijken.
         </Paragraph>
+      </Grid.Cell>
+      <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
+        <Heading level={2}>Hoe gebruikt u de uitkomst?</Heading>
       </Grid.Cell>
       <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
         <Paragraph>
@@ -34,6 +40,14 @@ export function WelcomeSection() {
           startpunt voor het gesprek binnen uw VvE, of nodig een installateur of
           adviseur uit om verder onderzoek te doen. U kunt de resultaten als PDF
           exporteren.
+        </Paragraph>
+      </Grid.Cell>
+      <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
+        <Paragraph>
+          Aanpassingen aan uw gebouw kunnen de uitkomst veranderen. U kunt de
+          keuzewijzer daarom meerdere keren invullen met verschillende gegevens,
+          bijvoorbeeld met extra isolatie of meer ruimte voor installaties. Zo
+          ziet u wat het verschil maakt.
         </Paragraph>
       </Grid.Cell>
       <Grid.Cell span={DEFAULT_CONTENT_SPAN}>
