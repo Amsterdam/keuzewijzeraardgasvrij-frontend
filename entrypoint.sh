@@ -17,4 +17,14 @@ done
 
 echo "}" >> /var/www/application/config/env.js
 
+# Keep every environment out of search engines unless indexing is explicitly
+# allowed (production only). Written to a tempDir because the root filesystem
+# is read-only; nginx.conf includes this file.
+ROBOTS_CONF=/var/cache/nginx/robots.conf
+if [ "$ALLOW_INDEXING" = "true" ]; then
+    : > "$ROBOTS_CONF"
+else
+    echo 'add_header X-Robots-Tag "noindex, nofollow" always;' > "$ROBOTS_CONF"
+fi
+
 exec "$@"
